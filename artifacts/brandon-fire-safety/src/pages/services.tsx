@@ -79,13 +79,29 @@ export default function Services() {
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="bg-card py-20 border-b">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
+      {/* Header — dark, fire-themed */}
+      <section className="bg-[#111111] py-24 border-b border-white/10 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 80% at 50% 120%, rgba(220,20,20,0.7) 0%, transparent 65%)",
+          }}
+        />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
+        <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary border border-primary/30 text-sm font-semibold mb-6"
+          >
+            <Flame className="w-4 h-4" /> Full Service Fire Protection
+          </motion.div>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-display font-bold mb-6"
+            transition={{ delay: 0.05 }}
+            className="text-4xl md:text-5xl font-display font-bold mb-6 text-white"
           >
             Comprehensive Fire Safety Services
           </motion.h1>
@@ -93,7 +109,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-muted-foreground"
+            className="text-xl text-white/65"
           >
             From annual inspections to complex installations, we provide everything your business needs to stay compliant and protected.
           </motion.p>
@@ -117,14 +133,27 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Call to action */}
-      <section className="py-20 bg-muted border-t">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-display font-bold mb-6">Need a Custom Maintenance Plan?</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+      {/* Call to action — dark with red glow */}
+      <section className="py-20 bg-[#0f0f0f] border-t border-white/10 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-25"
+          style={{
+            background:
+              "radial-gradient(ellipse 50% 80% at 50% 100%, rgba(220,20,20,0.6) 0%, transparent 65%)",
+          }}
+        />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl font-display font-bold mb-6 text-white">Need a Custom Maintenance Plan?</h2>
+          <p className="text-lg text-white/65 mb-8 max-w-2xl mx-auto">
             We offer customized service contracts tailored to your facility's specific equipment and operational schedule.
           </p>
-          <Button asChild size="lg" className="font-semibold shadow-md" data-testid="button-services-call">
+          <Button
+            asChild
+            size="lg"
+            className="font-semibold bg-primary hover:bg-primary/90 text-white border-0 shadow-xl shadow-primary/40"
+            data-testid="button-services-call"
+          >
             <a href="tel:8136578888">Call to Discuss Your Needs</a>
           </Button>
         </div>

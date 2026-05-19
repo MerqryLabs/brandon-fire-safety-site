@@ -13,12 +13,17 @@ export default function Contact() {
   return (
     <Layout>
       {/* Header */}
-      <section className="bg-card py-20 border-b">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
+      <section className="bg-[#111111] py-24 border-b border-white/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
+        <div
+          className="absolute inset-0 opacity-15"
+          style={{ background: "radial-gradient(ellipse 60% 80% at 50% 120%, rgba(220,20,20,0.7) 0%, transparent 65%)" }}
+        />
+        <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-display font-bold mb-6"
+            className="text-4xl md:text-5xl font-display font-bold mb-6 text-white"
           >
             Contact Us
           </motion.h1>
@@ -26,7 +31,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-muted-foreground"
+            className="text-xl text-white/65"
           >
             Fast response, clear communication, and reliable service. We're here when you need us.
           </motion.p>

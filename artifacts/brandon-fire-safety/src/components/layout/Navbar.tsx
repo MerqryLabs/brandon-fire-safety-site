@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Flame } from "lucide-react";
+import { Menu, X, Flame, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -30,15 +30,17 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b" : "bg-background"
+        isScrolled
+          ? "bg-[#0f0f0f]/97 backdrop-blur-md shadow-lg shadow-black/30"
+          : "bg-[#0f0f0f]"
       }`}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group" data-testid="link-logo">
-          <div className="bg-primary p-2 rounded-lg group-hover:bg-primary/90 transition-colors">
-            <Flame className="w-6 h-6 text-primary-foreground" />
+        <Link to="/" className="flex items-center gap-3 group" data-testid="link-logo">
+          <div className="bg-primary p-2 rounded-lg group-hover:bg-primary/85 transition-colors shadow-md shadow-primary/30">
+            <Flame className="w-6 h-6 text-white" />
           </div>
-          <span className="font-display font-bold text-xl tracking-tight text-foreground">
+          <span className="font-display font-bold text-lg tracking-tight text-white">
             Brandon Fire & Safety Equipment Co Inc
           </span>
         </Link>
@@ -53,8 +55,10 @@ export function Navbar() {
                   <Link
                     to={link.href}
                     data-testid={`link-nav-${link.name.toLowerCase()}`}
-                    className={`text-sm font-medium transition-colors hover:text-primary ${
-                      isActive ? "text-primary" : "text-muted-foreground"
+                    className={`text-sm font-medium transition-colors ${
+                      isActive
+                        ? "text-primary"
+                        : "text-white/70 hover:text-white"
                     }`}
                   >
                     {link.name}
@@ -65,20 +69,28 @@ export function Navbar() {
           </ul>
           <div className="flex items-center gap-4">
             <div className="text-right hidden lg:block">
-              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">24/7 Emergency</p>
-              <a href="tel:8136578888" className="font-display font-bold text-foreground hover:text-primary transition-colors">
+              <p className="text-xs text-white/50 font-medium uppercase tracking-wider">24/7 Emergency</p>
+              <a href="tel:8136578888" className="font-display font-bold text-white hover:text-primary transition-colors">
                 (813) 657-8888
               </a>
             </div>
-            <Button asChild size="lg" className="font-semibold shadow-md hover:shadow-lg transition-all" data-testid="button-nav-call">
-              <a href="tel:8136578888">Call Now</a>
+            <Button
+              asChild
+              size="lg"
+              className="font-semibold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/40 border-0"
+              data-testid="button-nav-call"
+            >
+              <a href="tel:8136578888">
+                <Phone className="w-4 h-4 mr-1.5" />
+                Call Now
+              </a>
             </Button>
           </div>
         </nav>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden p-2 text-white/80 hover:text-white transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
           data-testid="button-mobile-menu"
@@ -94,10 +106,10 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b overflow-hidden"
+            className="md:hidden bg-[#0f0f0f] border-t border-white/10 overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href;
                   return (
@@ -105,8 +117,8 @@ export function Navbar() {
                       <Link
                         to={link.href}
                         data-testid={`link-mobile-nav-${link.name.toLowerCase()}`}
-                        className={`block py-3 text-lg font-medium border-b border-border/50 ${
-                          isActive ? "text-primary" : "text-foreground"
+                        className={`block py-3 text-lg font-medium border-b border-white/10 ${
+                          isActive ? "text-primary" : "text-white/80"
                         }`}
                       >
                         {link.name}
@@ -117,12 +129,12 @@ export function Navbar() {
               </ul>
               <div className="pt-4 flex flex-col gap-4">
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider mb-1">24/7 Emergency</p>
-                  <a href="tel:8136578888" className="font-display font-bold text-2xl text-foreground">
+                  <p className="text-sm text-white/50 font-medium uppercase tracking-wider mb-1">24/7 Emergency</p>
+                  <a href="tel:8136578888" className="font-display font-bold text-2xl text-white">
                     (813) 657-8888
                   </a>
                 </div>
-                <Button asChild size="lg" className="w-full font-semibold" data-testid="button-mobile-call">
+                <Button asChild size="lg" className="w-full font-semibold bg-primary hover:bg-primary/90 text-white border-0" data-testid="button-mobile-call">
                   <a href="tel:8136578888">Call Now</a>
                 </Button>
               </div>
