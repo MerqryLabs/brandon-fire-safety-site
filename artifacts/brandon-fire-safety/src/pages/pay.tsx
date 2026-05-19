@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { CreditCard, ShieldCheck, Lock, CheckCircle2, AlertCircle, Loader2, DollarSign, FileText, User, Phone } from "lucide-react";
+import { CreditCard, ShieldCheck, Lock, CheckCircle2, AlertCircle, Loader2, DollarSign, FileText, User, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -44,7 +44,7 @@ type SquareCard = {
 type PaymentState =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "success"; paymentId: string; customerName: string; invoiceNumber: string; amount: string }
+  | { status: "success"; paymentId: string; customerName: string; invoiceNumber: string; amount: string; email: string }
   | { status: "error"; message: string };
 
 const inputClass =
@@ -54,6 +54,7 @@ const labelClass = "block text-white/70 text-sm font-medium mb-2";
 export default function Pay() {
   const [customerName, setCustomerName] = useState("");
   const [invoiceNumber, setInvoiceNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [sdkReady, setSdkReady] = useState(false);
   const [sdkError, setSdkError] = useState<string | null>(null);
@@ -110,7 +111,7 @@ export default function Pay() {
     e.preventDefault();
 
     const parsedAmount = parseFloat(amount);
-    if (!customerName.trim() || !invoiceNumber.trim() || isNaN(parsedAmount) || parsedAmount <= 0) {
+    if (!customerName.trim() || !invoiceNumber.trim() || !email.trim() || isNaN(parsedAmount) || parsedAmount <= 0) {
       setPaymentState({ status: "error", message: "Please fill in all fields with valid values." });
       return;
     }
@@ -138,6 +139,7 @@ export default function Pay() {
         token: result.token,
         customerName: customerName.trim(),
         invoiceNumber: invoiceNumber.trim(),
+        email: email.trim(),
         amountCents,
       }),
     });
@@ -155,6 +157,7 @@ export default function Pay() {
       customerName: customerName.trim(),
       invoiceNumber: invoiceNumber.trim(),
       amount: parsedAmount.toFixed(2),
+      email: email.trim(),
     });
   }
 
@@ -162,6 +165,7 @@ export default function Pay() {
     setPaymentState({ status: "idle" });
     setCustomerName("");
     setInvoiceNumber("");
+    setEmail("");
     setAmount("");
     setSdkReady(false);
     setSdkError(null);
@@ -229,10 +233,16 @@ export default function Pay() {
                 <p className="text-white/60 mb-1">
                   Thank you, <span className="text-white font-medium">{paymentState.customerName}</span>.
                 </p>
-                <p className="text-white/60 mb-6">
+                <p className="text-white/60 mb-3">
                   Invoice <span className="text-white font-medium">#{paymentState.invoiceNumber}</span> paid for{" "}
                   <span className="text-white font-medium">${paymentState.amount}</span>.
                 </p>
+                <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 mb-6">
+                  <Mail className="w-3.5 h-3.5 text-green-400 shrink-0" />
+                  <p className="text-green-300 text-sm">
+                    A receipt has been sent to <span className="font-medium">{paymentState.email}</span>
+                  </p>
+                </div>
                 {paymentState.paymentId && (
                   <p className="text-white/35 text-xs mb-8 font-mono">
                     Confirmation: {paymentState.paymentId}
@@ -292,6 +302,26 @@ export default function Pay() {
                       required
                       className={inputClass}
                     />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className={labelClass}>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Mail className="w-3.5 h-3.5" />
+                        Email Address
+                      </span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className={inputClass}
+                    />
+                    <p className="text-white/30 text-xs mt-1.5">Square will send a receipt to this address after payment.</p>
                   </div>
 
                   {/* Amount */}

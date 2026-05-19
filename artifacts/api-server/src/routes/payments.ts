@@ -3,11 +3,12 @@ import { Router, type IRouter } from "express";
 const router: IRouter = Router();
 
 router.post("/payments/square", async (req, res): Promise<void> => {
-  const { token, customerName, invoiceNumber, amountCents } = req.body as {
+  const { token, customerName, invoiceNumber, amountCents, email } = req.body as {
     token: unknown;
     customerName: unknown;
     invoiceNumber: unknown;
     amountCents: unknown;
+    email: unknown;
   };
 
   if (
@@ -18,7 +19,9 @@ router.post("/payments/square", async (req, res): Promise<void> => {
     typeof invoiceNumber !== "string" ||
     !invoiceNumber ||
     typeof amountCents !== "number" ||
-    amountCents < 1
+    amountCents < 1 ||
+    typeof email !== "string" ||
+    !email
   ) {
     res.status(400).json({ error: "Missing or invalid required fields" });
     return;
@@ -56,6 +59,7 @@ router.post("/payments/square", async (req, res): Promise<void> => {
         currency: "USD",
       },
       location_id: locationId,
+      buyer_email_address: email,
       note: `Invoice #${invoiceNumber} – ${customerName}`,
     }),
   });
