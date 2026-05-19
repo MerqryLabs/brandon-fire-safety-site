@@ -38,6 +38,9 @@ export default function Reviews() {
   useSEO({
     title: "Customer Reviews | Brandon Fire & Safety Equipment Co Inc",
     description: "Read what customers say about Brandon Fire & Safety Equipment Co Inc. Trusted fire safety inspections and services in Tampa, FL with 5-star reviews from local businesses.",
+    canonical: "https://brandonfiresafety.com/reviews",
+    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
+    ogUrl: "https://brandonfiresafety.com/reviews",
   });
 
   const averageRating = (reviews.reduce((acc, rev) => acc + rev.rating, 0) / reviews.length).toFixed(1);

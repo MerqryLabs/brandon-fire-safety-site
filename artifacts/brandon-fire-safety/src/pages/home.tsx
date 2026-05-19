@@ -10,7 +10,9 @@ export default function Home() {
   useSEO({
     title: "Brandon Fire & Safety Equipment Co Inc | Commercial Fire Protection Services",
     description: "Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions in Tampa, FL.",
-    ogImage: "/hero-bg.png",
+    canonical: "https://brandonfiresafety.com/",
+    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
+    ogUrl: "https://brandonfiresafety.com/",
   });
 
   return (

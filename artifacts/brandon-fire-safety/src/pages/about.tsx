@@ -9,6 +9,9 @@ export default function About() {
   useSEO({
     title: "About Us | Brandon Fire & Safety Equipment Co Inc",
     description: "Learn about Brandon Fire & Safety Equipment Co Inc — a trusted commercial fire protection company serving Tampa, FL with licensed inspections, suppression systems, and code compliance solutions.",
+    canonical: "https://brandonfiresafety.com/about",
+    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
+    ogUrl: "https://brandonfiresafety.com/about",
   });
 
   return (

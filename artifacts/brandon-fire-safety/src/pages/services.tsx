@@ -75,6 +75,9 @@ export default function Services() {
   useSEO({
     title: "Our Services | Brandon Fire & Safety Equipment Co Inc",
     description: "Comprehensive fire safety services in Tampa, FL — extinguisher inspections, suppression systems, kitchen hood suppression, emergency lighting, alarm inspections, code compliance, and more.",
+    canonical: "https://brandonfiresafety.com/services",
+    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
+    ogUrl: "https://brandonfiresafety.com/services",
   });
 
   return (

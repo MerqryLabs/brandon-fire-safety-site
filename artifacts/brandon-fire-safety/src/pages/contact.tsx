@@ -8,6 +8,9 @@ export default function Contact() {
   useSEO({
     title: "Contact Us | Brandon Fire & Safety Equipment Co Inc",
     description: "Contact Brandon Fire & Safety Equipment Co Inc at (813) 657-8888. Located at 4107 Cragmont Drive, Tampa, FL 33610. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
+    canonical: "https://brandonfiresafety.com/contact",
+    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
+    ogUrl: "https://brandonfiresafety.com/contact",
   });
 
   return (
