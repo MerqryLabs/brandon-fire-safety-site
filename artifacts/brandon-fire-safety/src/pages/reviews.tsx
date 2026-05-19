@@ -15,7 +15,7 @@ const reviews = [
   {
     name: "Sandra R.",
     rating: 5,
-    text: "Brandon Fire & Safety handled our restaurant's kitchen hood suppression inspection quickly and thoroughly. We passed code without any issues."
+    text: "Brandon Fire & Safety Equipment Co Inc handled our restaurant's kitchen hood suppression inspection quickly and thoroughly. We passed code without any issues."
   },
   {
     name: "Mike T.",
@@ -30,14 +30,14 @@ const reviews = [
   {
     name: "David W.",
     rating: 5,
-    text: "Been using Brandon Fire & Safety for 3 years now for our annual inspections. Always reliable, always on time. Best in the area."
+    text: "Been using Brandon Fire & Safety Equipment Co Inc for 3 years now for our annual inspections. Always reliable, always on time. Best in the area."
   }
 ];
 
 export default function Reviews() {
   useSEO({
-    title: "Customer Reviews | Brandon Fire & Safety",
-    description: "Read what customers say about Brandon Fire & Safety. Trusted fire safety inspections and services in Brandon, FL with 5-star reviews from local businesses.",
+    title: "Customer Reviews | Brandon Fire & Safety Equipment Co Inc",
+    description: "Read what customers say about Brandon Fire & Safety Equipment Co Inc. Trusted fire safety inspections and services in Tampa, FL with 5-star reviews from local businesses.",
   });
 
   const averageRating = (reviews.reduce((acc, rev) => acc + rev.rating, 0) / reviews.length).toFixed(1);

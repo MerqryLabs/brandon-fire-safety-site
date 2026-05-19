@@ -7,8 +7,8 @@ import { Layout } from "@/components/layout/Layout";
 
 export default function About() {
   useSEO({
-    title: "About Us | Brandon Fire & Safety",
-    description: "Learn about Brandon Fire & Safety — a trusted commercial fire protection company serving Brandon, FL with licensed inspections, suppression systems, and code compliance solutions.",
+    title: "About Us | Brandon Fire & Safety Equipment Co Inc",
+    description: "Learn about Brandon Fire & Safety Equipment Co Inc — a trusted commercial fire protection company serving Tampa, FL with licensed inspections, suppression systems, and code compliance solutions.",
   });
 
   return (
@@ -21,7 +21,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-display font-bold mb-6 text-foreground"
           >
-            About Brandon Fire & Safety
+            About Brandon Fire & Safety Equipment Co Inc
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -47,10 +47,10 @@ export default function About() {
               <h2 className="text-3xl font-display font-bold mb-6">Our Commitment to Safety</h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  At Brandon Fire & Safety, we understand that protecting your business, employees, and customers is your top priority. That makes it our top priority, too.
+                  At Brandon Fire & Safety Equipment Co Inc, we understand that protecting your business, employees, and customers is your top priority. That makes it our top priority, too.
                 </p>
                 <p>
-                  Based right here in Brandon, FL, we provide comprehensive commercial fire protection services designed to keep your facility compliant, safe, and prepared for any emergency. From routine annual inspections to complex kitchen hood suppression systems, our certified technicians handle it all with precision and professionalism.
+                  Based in Tampa, FL, we provide comprehensive commercial fire protection services designed to keep your facility compliant, safe, and prepared for any emergency. From routine annual inspections to complex kitchen hood suppression systems, our certified technicians handle it all with precision and professionalism.
                 </p>
                 <p>
                   We don't just sell equipment; we provide peace of mind. When you partner with us, you're getting a dedicated team that shows up on time, performs the job correctly the first time, and maintains meticulous records of your compliance status.

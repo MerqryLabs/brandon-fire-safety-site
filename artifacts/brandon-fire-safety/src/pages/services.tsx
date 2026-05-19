@@ -73,8 +73,8 @@ const services = [
 
 export default function Services() {
   useSEO({
-    title: "Our Services | Brandon Fire & Safety",
-    description: "Comprehensive fire safety services in Brandon, FL — extinguisher inspections, suppression systems, kitchen hood suppression, emergency lighting, alarm inspections, code compliance, and more.",
+    title: "Our Services | Brandon Fire & Safety Equipment Co Inc",
+    description: "Comprehensive fire safety services in Tampa, FL — extinguisher inspections, suppression systems, kitchen hood suppression, emergency lighting, alarm inspections, code compliance, and more.",
   });
 
   return (

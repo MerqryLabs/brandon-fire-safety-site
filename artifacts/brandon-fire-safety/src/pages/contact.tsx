@@ -6,8 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Contact() {
   useSEO({
-    title: "Contact Us | Brandon Fire & Safety",
-    description: "Contact Brandon Fire & Safety at (813) 657-8888. Located at 1533 Oak Grove Dr, Brandon, FL 33510. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
+    title: "Contact Us | Brandon Fire & Safety Equipment Co Inc",
+    description: "Contact Brandon Fire & Safety Equipment Co Inc at (813) 657-8888. Located at 4107 Cragmont Drive, Tampa, FL 33610. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
   });
 
   return (
@@ -74,12 +74,12 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Office Location</h3>
                       <address className="not-italic text-muted-foreground leading-relaxed">
-                        Brandon Fire & Safety<br />
-                        1533 Oak Grove Dr<br />
-                        Brandon, FL 33510
+                        Brandon Fire & Safety Equipment Co Inc<br />
+                        4107 Cragmont Drive<br />
+                        Tampa, FL 33610
                       </address>
                       <a 
-                        href="https://maps.google.com/?q=1533+Oak+Grove+Dr,+Brandon,+FL+33510" 
+                        href="https://maps.google.com/?q=4107+Cragmont+Drive,+Tampa,+FL+33610" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 mt-3 transition-colors"
@@ -131,7 +131,7 @@ export default function Contact() {
                 allowFullScreen={true}
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps Location for Brandon Fire & Safety"
+                title="Google Maps Location for Brandon Fire & Safety Equipment Co Inc"
               />
             </motion.div>
           </div>

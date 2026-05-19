@@ -15,7 +15,7 @@ export function Footer() {
                 <Flame className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="font-display font-bold text-xl tracking-tight">
-                Brandon Fire & Safety
+                Brandon Fire & Safety Equipment Co Inc
               </span>
             </Link>
             <p className="text-secondary-foreground/80 leading-relaxed">
@@ -91,7 +91,7 @@ export function Footer() {
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-white mb-1">Address</p>
-                  <p>1533 Oak Grove Dr<br />Brandon, FL 33510</p>
+                  <p>4107 Cragmont Drive<br />Tampa, FL 33610</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-secondary-foreground/80">
@@ -108,10 +108,10 @@ export function Footer() {
 
         <div className="border-t border-secondary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-secondary-foreground/60 text-sm">
-            &copy; {currentYear} Brandon Fire & Safety. All rights reserved.
+            &copy; {currentYear} Brandon Fire & Safety Equipment Co Inc. All rights reserved.
           </p>
           <p className="text-secondary-foreground/60 text-sm">
-            Serving Brandon, FL and surrounding areas.
+            Serving Tampa, FL and surrounding areas.
           </p>
         </div>
       </div>

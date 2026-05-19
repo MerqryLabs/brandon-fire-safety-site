@@ -39,7 +39,7 @@ export function Navbar() {
             <Flame className="w-6 h-6 text-primary-foreground" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight text-foreground">
-            Brandon Fire & Safety
+            Brandon Fire & Safety Equipment Co Inc
           </span>
         </Link>
 

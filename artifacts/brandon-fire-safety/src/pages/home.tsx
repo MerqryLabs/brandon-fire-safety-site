@@ -8,8 +8,8 @@ import { useSEO } from "@/hooks/use-seo";
 
 export default function Home() {
   useSEO({
-    title: "Brandon Fire & Safety | Commercial Fire Protection Services",
-    description: "Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions in Brandon, FL.",
+    title: "Brandon Fire & Safety Equipment Co Inc | Commercial Fire Protection Services",
+    description: "Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions in Tampa, FL.",
     ogImage: "/hero-bg.png",
   });
 
@@ -42,7 +42,7 @@ export default function Home() {
                 Protecting Businesses & Properties With <span className="text-primary">Professional</span> Fire Safety Solutions
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl leading-relaxed">
-                Trusted fire protection services including inspections, extinguishers, suppression systems, emergency lighting, and code compliance solutions for commercial properties in Brandon, FL.
+                Trusted fire protection services including inspections, extinguishers, suppression systems, emergency lighting, and code compliance solutions for commercial properties in Tampa, FL.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -145,7 +145,7 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-display font-bold mb-6">Need an Inspection or Service?</h2>
             <p className="text-xl text-primary-foreground/90 mb-10">
-              Don't wait until it's too late. Ensure your business is compliant and protected today with Brandon Fire & Safety.
+              Don't wait until it's too late. Ensure your business is compliant and protected today with Brandon Fire & Safety Equipment Co Inc.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary" className="font-semibold shadow-lg" data-testid="button-cta-call">
