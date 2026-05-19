@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSEO } from "@/hooks/use-seo";
 import { 
   FlameKindling, Flame, Zap, ShieldAlert, FileCheck2, 
   GraduationCap, Building2, HardHat, CalendarCheck, Wrench, Bell, ShieldCheck
@@ -72,9 +72,10 @@ const services = [
 ];
 
 export default function Services() {
-  useEffect(() => {
-    document.title = "Our Services | Brandon Fire & Safety";
-  }, []);
+  useSEO({
+    title: "Our Services | Brandon Fire & Safety",
+    description: "Comprehensive fire safety services in Brandon, FL — extinguisher inspections, suppression systems, kitchen hood suppression, emergency lighting, alarm inspections, code compliance, and more.",
+  });
 
   return (
     <Layout>

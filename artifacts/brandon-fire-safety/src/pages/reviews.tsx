@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSEO } from "@/hooks/use-seo";
 import { Layout } from "@/components/layout/Layout";
 import { ReviewCard } from "@/components/ReviewCard";
 import { Button } from "@/components/ui/button";
@@ -35,9 +35,10 @@ const reviews = [
 ];
 
 export default function Reviews() {
-  useEffect(() => {
-    document.title = "Customer Reviews | Brandon Fire & Safety";
-  }, []);
+  useSEO({
+    title: "Customer Reviews | Brandon Fire & Safety",
+    description: "Read what customers say about Brandon Fire & Safety. Trusted fire safety inspections and services in Brandon, FL with 5-star reviews from local businesses.",
+  });
 
   const averageRating = (reviews.reduce((acc, rev) => acc + rev.rating, 0) / reviews.length).toFixed(1);
 
@@ -103,7 +104,7 @@ export default function Reviews() {
           <p className="text-xl text-primary-foreground/90 mb-10 max-w-2xl mx-auto">
             Join our growing list of satisfied customers. Contact us today to schedule your service.
           </p>
-          <Button asChild size="xl" variant="secondary" className="font-semibold shadow-lg" data-testid="button-reviews-call">
+          <Button asChild size="lg" variant="secondary" className="font-semibold shadow-lg" data-testid="button-reviews-call">
             <a href="tel:8136578888">Call Now: (813) 657-8888</a>
           </Button>
         </div>

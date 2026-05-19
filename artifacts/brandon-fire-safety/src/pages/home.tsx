@@ -1,15 +1,17 @@
-import { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Clock, Award, CheckCircle2, FlameKindling, Zap, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { ServiceCard } from "@/components/ServiceCard";
+import { useSEO } from "@/hooks/use-seo";
 
 export default function Home() {
-  useEffect(() => {
-    document.title = "Brandon Fire & Safety | Commercial Fire Protection Services";
-  }, []);
+  useSEO({
+    title: "Brandon Fire & Safety | Commercial Fire Protection Services",
+    description: "Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions in Brandon, FL.",
+    ogImage: "/hero-bg.png",
+  });
 
   return (
     <Layout>
@@ -44,12 +46,12 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="xl" className="text-base font-semibold shadow-xl" data-testid="button-hero-call">
+                <Button asChild size="lg" className="text-base font-semibold shadow-xl" data-testid="button-hero-call">
                   <a href="tel:8136578888">
                     Call Now: (813) 657-8888
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="xl" className="text-base font-semibold bg-background/50 backdrop-blur-sm hover:bg-background/80" data-testid="button-hero-services">
+                <Button asChild variant="outline" size="lg" className="text-base font-semibold bg-background/50 backdrop-blur-sm hover:bg-background/80" data-testid="button-hero-services">
                   <Link href="/services">
                     Explore Our Services <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
@@ -146,12 +148,12 @@ export default function Home() {
               Don't wait until it's too late. Ensure your business is compliant and protected today with Brandon Fire & Safety.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="xl" variant="secondary" className="font-semibold shadow-lg" data-testid="button-cta-call">
+              <Button asChild size="lg" variant="secondary" className="font-semibold shadow-lg" data-testid="button-cta-call">
                 <a href="tel:8136578888">
                   Call (813) 657-8888
                 </a>
               </Button>
-              <Button asChild size="xl" variant="outline" className="font-semibold bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary" data-testid="button-cta-contact">
+              <Button asChild size="lg" variant="outline" className="font-semibold bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary" data-testid="button-cta-contact">
                 <Link href="/contact">Get Directions</Link>
               </Button>
             </div>

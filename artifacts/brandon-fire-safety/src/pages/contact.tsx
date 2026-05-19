@@ -1,13 +1,14 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSEO } from "@/hooks/use-seo";
 import { Phone, MapPin, Clock, Navigation } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Contact() {
-  useEffect(() => {
-    document.title = "Contact Us | Brandon Fire & Safety";
-  }, []);
+  useSEO({
+    title: "Contact Us | Brandon Fire & Safety",
+    description: "Contact Brandon Fire & Safety at (813) 657-8888. Located at 1533 Oak Grove Dr, Brandon, FL 33510. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
+  });
 
   return (
     <Layout>

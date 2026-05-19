@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useSEO } from "@/hooks/use-seo";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { CheckCircle2, Shield, Users, Target } from "lucide-react";
@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 
 export default function About() {
-  useEffect(() => {
-    document.title = "About Us | Brandon Fire & Safety";
-  }, []);
+  useSEO({
+    title: "About Us | Brandon Fire & Safety",
+    description: "Learn about Brandon Fire & Safety — a trusted commercial fire protection company serving Brandon, FL with licensed inspections, suppression systems, and code compliance solutions.",
+  });
 
   return (
     <Layout>
