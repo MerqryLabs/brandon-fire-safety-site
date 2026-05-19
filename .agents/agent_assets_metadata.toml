@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "1e9TbBDx7w51TJiG-hWBR"
@@ -18,3 +17,39 @@ id = "GPI3qhPKv6RScUNgi0uhB"
 uri = "file://artifacts/brandon-fire-safety/public/about-technician.png"
 type = "image"
 title = "plain shirt technician extinguisher"
+
+[[outputs]]
+id = "onBMzVCPtvJUmXNESn8Y4"
+uri = "file://attached_assets/image_search/tech_1.jpg"
+type = "image"
+title = "Option 1 — Natural gas/safety inspection"
+
+[[outputs]]
+id = "iQxPRjREYuu18QG5e_Ktm"
+uri = "file://attached_assets/image_search/tech_2.jpg"
+type = "image"
+title = "Option 2 — Technician with clipboard & extinguisher"
+
+[[outputs]]
+id = "9Uy5VIDaRp5onA1S2mYa9"
+uri = "file://attached_assets/image_search/tech_3.jpg"
+type = "image"
+title = "Option 3 — Tech servicing extinguisher"
+
+[[outputs]]
+id = "5t6pwRTmpatV9knscAb-i"
+uri = "file://attached_assets/image_search/tech_4.jpg"
+type = "image"
+title = "Option 4 — Extinguisher inspection close-up"
+
+[[outputs]]
+id = "dRsniDwQ0ja8J1lgCn3FU"
+uri = "file://attached_assets/image_search/tech_5.jpg"
+type = "image"
+title = "Option 5 — Fire extinguisher inspection"
+
+[[outputs]]
+id = "3ihZamNO2_y2jdcSokmpS"
+uri = "file://attached_assets/image_search/tech_6.jpg"
+type = "image"
+title = "Option 6 — Technician reviewing extinguisher"
