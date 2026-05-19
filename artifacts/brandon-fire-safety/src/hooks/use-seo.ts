@@ -8,27 +8,26 @@ interface SEOProps {
   ogImage?: string;
 }
 
+function ensureMeta(attrName: string, attrValue: string): HTMLMetaElement {
+  let el = document.querySelector<HTMLMetaElement>(`meta[${attrName}="${attrValue}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attrName, attrValue);
+    document.head.appendChild(el);
+  }
+  return el;
+}
+
 export function useSEO({ title, description, ogTitle, ogDescription, ogImage }: SEOProps) {
   useEffect(() => {
     document.title = title;
 
-    const setMeta = (selector: string, content: string) => {
-      let el = document.querySelector<HTMLMetaElement>(selector);
-      if (!el) {
-        el = document.createElement("meta");
-        const [attr, val] = selector.replace(/[\[\]"]/g, " ").trim().split(/\s+/);
-        el.setAttribute(attr, val);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    setMeta('meta[name="description"]', description);
-    setMeta('meta[property="og:title"]', ogTitle ?? title);
-    setMeta('meta[property="og:description"]', ogDescription ?? description);
-    if (ogImage) setMeta('meta[property="og:image"]', ogImage);
-    setMeta('meta[name="twitter:title"]', ogTitle ?? title);
-    setMeta('meta[name="twitter:description"]', ogDescription ?? description);
-    if (ogImage) setMeta('meta[name="twitter:image"]', ogImage);
+    ensureMeta("name", "description").setAttribute("content", description);
+    ensureMeta("property", "og:title").setAttribute("content", ogTitle ?? title);
+    ensureMeta("property", "og:description").setAttribute("content", ogDescription ?? description);
+    ensureMeta("name", "twitter:title").setAttribute("content", ogTitle ?? title);
+    ensureMeta("name", "twitter:description").setAttribute("content", ogDescription ?? description);
+    if (ogImage) ensureMeta("property", "og:image").setAttribute("content", ogImage);
+    if (ogImage) ensureMeta("name", "twitter:image").setAttribute("content", ogImage);
   }, [title, description, ogTitle, ogDescription, ogImage]);
 }

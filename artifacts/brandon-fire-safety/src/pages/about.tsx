@@ -1,7 +1,7 @@
 import { useSEO } from "@/hooks/use-seo";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle2, Shield, Users, Target } from "lucide-react";
+import { Shield, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 
