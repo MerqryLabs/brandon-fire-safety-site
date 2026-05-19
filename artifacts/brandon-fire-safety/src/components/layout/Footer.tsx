@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { MapPin, Phone, Clock, ShieldCheck, Flame } from "lucide-react";
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2 group" data-testid="link-footer-logo">
+            <Link to="/" className="flex items-center gap-2 group" data-testid="link-footer-logo">
               <div className="bg-primary p-2 rounded-lg">
                 <Flame className="w-6 h-6 text-primary-foreground" />
               </div>
@@ -40,7 +40,7 @@ export function Footer() {
               ].map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-secondary-foreground/80 hover:text-white transition-colors"
                     data-testid={`link-footer-${link.name.toLowerCase().replace(" ", "-")}`}
                   >
@@ -68,7 +68,7 @@ export function Footer() {
               ))}
             </ul>
             <div className="mt-4">
-              <Link href="/services" className="text-primary hover:text-primary/80 font-medium transition-colors">
+              <Link to="/services" className="text-primary hover:text-primary/80 font-medium transition-colors">
                 View all services &rarr;
               </Link>
             </div>

@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Clock, Award, CheckCircle2, FlameKindling, Zap, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -51,9 +51,9 @@ export default function Home() {
                     Call Now: (813) 657-8888
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="text-base font-semibold bg-background/50 backdrop-blur-sm hover:bg-background/80" data-testid="button-hero-services">
-                  <Link href="/services">
-                    Explore Our Services <ArrowRight className="ml-2 w-5 h-5" />
+                <Button asChild variant="outline" size="lg" className="text-base font-semibold bg-background/50 backdrop-blur-sm hover:bg-background/80" data-testid="button-hero-request">
+                  <Link to="/contact">
+                    Request Info <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
               </div>
@@ -132,7 +132,7 @@ export default function Home() {
 
           <div className="mt-16 text-center">
             <Button asChild variant="outline" size="lg" className="font-semibold" data-testid="button-all-services">
-              <Link href="/services">View All Services</Link>
+              <Link to="/services">View All Services</Link>
             </Button>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function Home() {
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="font-semibold bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary" data-testid="button-cta-contact">
-                <Link href="/contact">Get Directions</Link>
+                <Link to="/contact">Get Directions</Link>
               </Button>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { useSEO } from "@/hooks/use-seo";
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle2, Shield, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,7 +59,7 @@ export default function About() {
 
               <div className="mt-10">
                 <Button asChild size="lg" className="font-semibold shadow-md" data-testid="button-about-contact">
-                  <Link href="/contact">Contact Our Team</Link>
+                  <Link to="/contact">Contact Our Team</Link>
                 </Button>
               </div>
             </motion.div>

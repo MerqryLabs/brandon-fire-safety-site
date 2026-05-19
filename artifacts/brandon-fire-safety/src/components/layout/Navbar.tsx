@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Flame } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
-  const [location] = useLocation();
+  const { pathname } = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,10 +23,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   return (
     <header
@@ -35,7 +34,7 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group" data-testid="link-logo">
+        <Link to="/" className="flex items-center gap-2 group" data-testid="link-logo">
           <div className="bg-primary p-2 rounded-lg group-hover:bg-primary/90 transition-colors">
             <Flame className="w-6 h-6 text-primary-foreground" />
           </div>
@@ -48,11 +47,11 @@ export function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           <ul className="flex items-center gap-6">
             {navLinks.map((link) => {
-              const isActive = location === link.href;
+              const isActive = pathname === link.href;
               return (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     data-testid={`link-nav-${link.name.toLowerCase()}`}
                     className={`text-sm font-medium transition-colors hover:text-primary ${
                       isActive ? "text-primary" : "text-muted-foreground"
@@ -100,11 +99,11 @@ export function Navbar() {
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               <ul className="flex flex-col gap-2">
                 {navLinks.map((link) => {
-                  const isActive = location === link.href;
+                  const isActive = pathname === link.href;
                   return (
                     <li key={link.name}>
                       <Link
-                        href={link.href}
+                        to={link.href}
                         data-testid={`link-mobile-nav-${link.name.toLowerCase()}`}
                         className={`block py-3 text-lg font-medium border-b border-border/50 ${
                           isActive ? "text-primary" : "text-foreground"
