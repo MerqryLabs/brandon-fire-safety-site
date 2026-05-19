@@ -30,3 +30,9 @@ externalPort = 80
 [[ports]]
 localPort = 21426
 externalPort = 3000
+
+[userenv]
+
+[userenv.shared]
+SQUARE_ENV = "sandbox"
+VITE_SQUARE_ENV = "sandbox"

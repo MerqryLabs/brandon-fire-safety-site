@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Flame, Phone } from "lucide-react";
+import { Menu, X, Flame, Phone, CreditCard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -67,13 +67,25 @@ export function Navbar() {
               );
             })}
           </ul>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <div className="text-right hidden lg:block">
               <p className="text-xs text-white/50 font-medium uppercase tracking-wider">24/7 Emergency</p>
               <a href="tel:8136578888" className="font-display font-bold text-white hover:text-primary transition-colors">
                 (813) 657-8888
               </a>
             </div>
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="font-semibold border-white/20 bg-white/5 hover:bg-white/10 text-white/90 hover:text-white"
+              data-testid="button-nav-pay"
+            >
+              <Link to="/pay">
+                <CreditCard className="w-3.5 h-3.5 mr-1.5" />
+                Pay My Bill
+              </Link>
+            </Button>
             <Button
               asChild
               size="lg"
@@ -126,14 +138,37 @@ export function Navbar() {
                     </li>
                   );
                 })}
+                <li>
+                  <Link
+                    to="/pay"
+                    data-testid="link-mobile-nav-pay"
+                    className={`block py-3 text-lg font-medium border-b border-white/10 ${
+                      pathname === "/pay" ? "text-primary" : "text-white/80"
+                    }`}
+                  >
+                    Pay My Bill
+                  </Link>
+                </li>
               </ul>
-              <div className="pt-4 flex flex-col gap-4">
+              <div className="pt-4 flex flex-col gap-3">
                 <div className="text-center">
                   <p className="text-sm text-white/50 font-medium uppercase tracking-wider mb-1">24/7 Emergency</p>
                   <a href="tel:8136578888" className="font-display font-bold text-2xl text-white">
                     (813) 657-8888
                   </a>
                 </div>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full font-semibold border-white/20 bg-white/5 text-white"
+                  data-testid="button-mobile-pay"
+                >
+                  <Link to="/pay">
+                    <CreditCard className="w-4 h-4 mr-2" />
+                    Pay My Bill
+                  </Link>
+                </Button>
                 <Button asChild size="lg" className="w-full font-semibold bg-primary hover:bg-primary/90 text-white border-0" data-testid="button-mobile-call">
                   <a href="tel:8136578888">Call Now</a>
                 </Button>
