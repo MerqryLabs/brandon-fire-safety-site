@@ -36,3 +36,6 @@ externalPort = 3000
 [userenv.shared]
 SQUARE_ENV = "sandbox"
 VITE_SQUARE_ENV = "sandbox"
+VITE_SQUARE_APP_ID = "sandbox-sq0idb-oShpWqWp2Mxty760KjVoeg"
+VITE_SQUARE_LOCATION_ID = "LQ4ZAHJFDQ97Q"
+SQUARE_LOCATION_ID = "LQ4ZAHJFDQ97Q"

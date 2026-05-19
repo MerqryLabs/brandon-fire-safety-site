@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { CreditCard, ShieldCheck, Lock, CheckCircle2, AlertCircle, Loader2, DollarSign, FileText, User } from "lucide-react";
+import { CreditCard, ShieldCheck, Lock, CheckCircle2, AlertCircle, Loader2, DollarSign, FileText, User, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -37,11 +35,21 @@ const SDK_URL =
     ? "https://web.squarecdn.com/v1/square.js"
     : "https://sandbox.web.squarecdn.com/v1/square.js";
 
+type SquareCard = {
+  attach(selector: string): Promise<void>;
+  tokenize(): Promise<{ status: string; token?: string; errors?: Array<{ message: string }> }>;
+  destroy(): Promise<void>;
+};
+
 type PaymentState =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "success"; paymentId: string }
+  | { status: "success"; paymentId: string; customerName: string; invoiceNumber: string; amount: string }
   | { status: "error"; message: string };
+
+const inputClass =
+  "w-full bg-white/5 border border-white/15 text-white placeholder:text-white/30 rounded-xl px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors";
+const labelClass = "block text-white/70 text-sm font-medium mb-2";
 
 export default function Pay() {
   const [customerName, setCustomerName] = useState("");
@@ -51,24 +59,18 @@ export default function Pay() {
   const [sdkError, setSdkError] = useState<string | null>(null);
   const [paymentState, setPaymentState] = useState<PaymentState>({ status: "idle" });
 
-  const cardRef = useRef<{
-    attach(selector: string): Promise<void>;
-    tokenize(): Promise<{ status: string; token?: string; errors?: Array<{ message: string }> }>;
-    destroy(): Promise<void>;
-  } | null>(null);
-  const paymentsRef = useRef<Awaited<ReturnType<NonNullable<Window["Square"]>["payments"]>> | null>(null);
+  const cardRef = useRef<SquareCard | null>(null);
   const mountedRef = useRef(false);
 
   const credentialsConfigured = Boolean(SQUARE_APP_ID && SQUARE_LOCATION_ID);
 
   useEffect(() => {
     if (!credentialsConfigured) return;
-
     mountedRef.current = true;
 
     const existing = document.getElementById("square-sdk");
     if (existing) {
-      initSquare();
+      void initSquare();
       return;
     }
 
@@ -76,9 +78,7 @@ export default function Pay() {
     script.id = "square-sdk";
     script.src = SDK_URL;
     script.async = true;
-    script.onload = () => {
-      if (mountedRef.current) initSquare();
-    };
+    script.onload = () => { if (mountedRef.current) void initSquare(); };
     script.onerror = () => {
       if (mountedRef.current)
         setSdkError("Failed to load payment processor. Please refresh and try again.");
@@ -95,21 +95,12 @@ export default function Pay() {
     try {
       if (!window.Square) throw new Error("Square SDK not available");
       const payments = await window.Square.payments(SQUARE_APP_ID!, SQUARE_LOCATION_ID!);
-      paymentsRef.current = payments;
-      const card = await payments.card({
-        style: {
-          ".input-container": { borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" },
-          ".input-container.is-focus": { borderColor: "hsl(0 88% 50%)" },
-          input: { color: "#ffffff", fontSize: "15px" },
-          "input::placeholder": { color: "rgba(255,255,255,0.35)" },
-          ".message-text": { color: "rgba(255,255,255,0.6)" },
-          ".message-icon": { color: "rgba(255,255,255,0.6)" },
-        },
-      });
+      const card = await payments.card();
       cardRef.current = card;
       await card.attach("#square-card-container");
       if (mountedRef.current) setSdkReady(true);
     } catch (err) {
+      console.error("[Square] Init error:", err);
       if (mountedRef.current)
         setSdkError("Payment widget failed to load. Please refresh and try again.");
     }
@@ -124,7 +115,7 @@ export default function Pay() {
       return;
     }
     if (!cardRef.current) {
-      setPaymentState({ status: "error", message: "Card widget not ready. Please wait a moment and try again." });
+      setPaymentState({ status: "error", message: "Card widget not ready. Please wait and try again." });
       return;
     }
 
@@ -132,13 +123,14 @@ export default function Pay() {
 
     const result = await cardRef.current.tokenize();
     if (result.status !== "OK" || !result.token) {
-      const msg = result.errors?.[0]?.message ?? "Card information is invalid. Please check and try again.";
-      setPaymentState({ status: "error", message: msg });
+      setPaymentState({
+        status: "error",
+        message: result.errors?.[0]?.message ?? "Card information is invalid. Please check and try again.",
+      });
       return;
     }
 
     const amountCents = Math.round(parsedAmount * 100);
-
     const response = await fetch("/api/payments/square", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -157,7 +149,24 @@ export default function Pay() {
       return;
     }
 
-    setPaymentState({ status: "success", paymentId: data.paymentId ?? "" });
+    setPaymentState({
+      status: "success",
+      paymentId: data.paymentId ?? "",
+      customerName: customerName.trim(),
+      invoiceNumber: invoiceNumber.trim(),
+      amount: parsedAmount.toFixed(2),
+    });
+  }
+
+  function resetForm() {
+    setPaymentState({ status: "idle" });
+    setCustomerName("");
+    setInvoiceNumber("");
+    setAmount("");
+    setSdkReady(false);
+    setSdkError(null);
+    cardRef.current = null;
+    setTimeout(() => void initSquare(), 150);
   }
 
   return (
@@ -165,31 +174,27 @@ export default function Pay() {
       <Navbar />
 
       {/* Page Header */}
-      <section className="bg-surface pt-32 pb-16 border-b border-white/5">
+      <section className="bg-surface pt-36 pb-16 border-b border-white/5">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-6">
               <CreditCard className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Secure Online Payment</span>
             </div>
-            <h1 className="font-display font-bold text-4xl md:text-5xl text-white mb-4">
-              Pay My Bill
-            </h1>
+            <h1 className="font-display font-bold text-4xl md:text-5xl text-white mb-4">Pay My Bill</h1>
             <p className="text-white/60 text-lg max-w-xl mx-auto">
-              Securely pay your invoice online. Your payment is processed through Square — no card data touches our servers.
+              Securely pay your invoice online. Your card data is handled entirely by Square — it never touches our servers.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Payment Form */}
+      {/* Content */}
       <section className="flex-1 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-lg mx-auto">
+
+            {/* No credentials configured */}
             {!credentialsConfigured ? (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -199,18 +204,21 @@ export default function Pay() {
                 <CreditCard className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h2 className="font-display font-bold text-2xl text-white mb-3">Online Payments Coming Soon</h2>
                 <p className="text-white/60 mb-6">
-                  Our online payment portal is being set up. In the meantime, please call us to pay your invoice over the phone.
+                  Our online payment portal is being finalized. In the meantime, please call us to pay your invoice over the phone.
                 </p>
                 <a
                   href="tel:8136578888"
                   className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
                 >
+                  <Phone className="w-4 h-4" />
                   Call (813) 657-8888
                 </a>
               </motion.div>
+
+            /* Success state */
             ) : paymentState.status === "success" ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="bg-surface border border-green-500/20 rounded-2xl p-10 text-center"
               >
@@ -218,85 +226,85 @@ export default function Pay() {
                   <CheckCircle2 className="w-9 h-9 text-green-400" />
                 </div>
                 <h2 className="font-display font-bold text-2xl text-white mb-3">Payment Successful!</h2>
-                <p className="text-white/60 mb-2">
-                  Thank you, <span className="text-white font-medium">{customerName}</span>.
+                <p className="text-white/60 mb-1">
+                  Thank you, <span className="text-white font-medium">{paymentState.customerName}</span>.
                 </p>
                 <p className="text-white/60 mb-6">
-                  Invoice <span className="text-white font-medium">#{invoiceNumber}</span> has been paid for{" "}
-                  <span className="text-white font-medium">${parseFloat(amount).toFixed(2)}</span>.
+                  Invoice <span className="text-white font-medium">#{paymentState.invoiceNumber}</span> paid for{" "}
+                  <span className="text-white font-medium">${paymentState.amount}</span>.
                 </p>
                 {paymentState.paymentId && (
-                  <p className="text-white/40 text-sm mb-8">
-                    Confirmation ID: {paymentState.paymentId}
+                  <p className="text-white/35 text-xs mb-8 font-mono">
+                    Confirmation: {paymentState.paymentId}
                   </p>
                 )}
                 <Button
                   variant="outline"
                   className="border-white/20 text-white hover:bg-white/10"
-                  onClick={() => {
-                    setPaymentState({ status: "idle" });
-                    setCustomerName("");
-                    setInvoiceNumber("");
-                    setAmount("");
-                    setSdkReady(false);
-                    cardRef.current = null;
-                    paymentsRef.current = null;
-                    setTimeout(() => initSquare(), 100);
-                  }}
+                  onClick={resetForm}
                 >
                   Make Another Payment
                 </Button>
               </motion.div>
+
+            /* Payment form */
             ) : (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-surface border border-white/10 rounded-2xl p-8 md:p-10"
               >
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={(e) => void handleSubmit(e)} className="space-y-5">
+
                   {/* Customer Name */}
-                  <div className="space-y-2">
-                    <Label htmlFor="customerName" className="text-white/80 text-sm font-medium flex items-center gap-1.5">
-                      <User className="w-3.5 h-3.5" />
-                      Your Name
-                    </Label>
-                    <Input
+                  <div>
+                    <label htmlFor="customerName" className={labelClass}>
+                      <span className="inline-flex items-center gap-1.5">
+                        <User className="w-3.5 h-3.5" />
+                        Your Name
+                      </span>
+                    </label>
+                    <input
                       id="customerName"
                       type="text"
                       placeholder="Full name or business name"
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
                       required
-                      className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary focus:ring-primary/20 h-11"
+                      className={inputClass}
                     />
                   </div>
 
                   {/* Invoice Number */}
-                  <div className="space-y-2">
-                    <Label htmlFor="invoiceNumber" className="text-white/80 text-sm font-medium flex items-center gap-1.5">
-                      <FileText className="w-3.5 h-3.5" />
-                      Invoice Number
-                    </Label>
-                    <Input
+                  <div>
+                    <label htmlFor="invoiceNumber" className={labelClass}>
+                      <span className="inline-flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5" />
+                        Invoice Number
+                      </span>
+                    </label>
+                    <input
                       id="invoiceNumber"
                       type="text"
                       placeholder="e.g. INV-1042"
                       value={invoiceNumber}
                       onChange={(e) => setInvoiceNumber(e.target.value)}
                       required
-                      className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary focus:ring-primary/20 h-11"
+                      className={inputClass}
                     />
                   </div>
 
                   {/* Amount */}
-                  <div className="space-y-2">
-                    <Label htmlFor="amount" className="text-white/80 text-sm font-medium flex items-center gap-1.5">
-                      <DollarSign className="w-3.5 h-3.5" />
-                      Amount (USD)
-                    </Label>
+                  <div>
+                    <label htmlFor="amount" className={labelClass}>
+                      <span className="inline-flex items-center gap-1.5">
+                        <DollarSign className="w-3.5 h-3.5" />
+                        Amount (USD)
+                      </span>
+                    </label>
                     <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 font-medium select-none">$</span>
-                      <Input
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 font-medium pointer-events-none select-none">$</span>
+                      <input
                         id="amount"
                         type="number"
                         min="0.01"
@@ -305,33 +313,33 @@ export default function Pay() {
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         required
-                        className="bg-white/5 border-white/15 text-white placeholder:text-white/30 focus:border-primary focus:ring-primary/20 h-11 pl-7"
+                        className={`${inputClass} pl-8`}
                       />
                     </div>
                   </div>
 
                   {/* Square Card Widget */}
-                  <div className="space-y-2">
-                    <Label className="text-white/80 text-sm font-medium flex items-center gap-1.5">
-                      <CreditCard className="w-3.5 h-3.5" />
-                      Card Information
-                    </Label>
+                  <div>
+                    <label className={labelClass}>
+                      <span className="inline-flex items-center gap-1.5">
+                        <CreditCard className="w-3.5 h-3.5" />
+                        Card Information
+                      </span>
+                    </label>
                     <div
-                      className={`rounded-xl border transition-colors min-h-[56px] ${
-                        sdkReady
-                          ? "border-white/15"
-                          : "border-white/10 bg-white/5 flex items-center justify-center"
+                      className={`rounded-xl border min-h-[56px] transition-colors ${
+                        sdkReady ? "border-white/15" : "border-white/10 bg-white/[0.03]"
                       }`}
                     >
                       <div id="square-card-container" className="w-full" />
                       {!sdkReady && !sdkError && (
-                        <div className="flex items-center gap-2 text-white/40 text-sm py-4">
+                        <div className="flex items-center justify-center gap-2 text-white/35 text-sm py-4">
                           <Loader2 className="w-4 h-4 animate-spin" />
                           Loading secure card form…
                         </div>
                       )}
                       {sdkError && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm py-4 px-3">
+                        <div className="flex items-center gap-2 text-red-400 text-sm py-4 px-4">
                           <AlertCircle className="w-4 h-4 shrink-0" />
                           {sdkError}
                         </div>
@@ -339,7 +347,7 @@ export default function Pay() {
                     </div>
                   </div>
 
-                  {/* Error message */}
+                  {/* Error */}
                   {paymentState.status === "error" && (
                     <motion.div
                       initial={{ opacity: 0, y: -4 }}
@@ -362,7 +370,7 @@ export default function Pay() {
                       !invoiceNumber.trim() ||
                       !amount
                     }
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold text-base h-13 shadow-lg shadow-primary/30 disabled:opacity-40"
+                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold text-base py-6 shadow-lg shadow-primary/30 disabled:opacity-40"
                   >
                     {paymentState.status === "loading" ? (
                       <>
@@ -372,22 +380,23 @@ export default function Pay() {
                     ) : (
                       <>
                         <Lock className="w-4 h-4 mr-2" />
-                        Pay ${amount ? parseFloat(amount).toFixed(2) : "0.00"}
+                        Pay {amount && !isNaN(parseFloat(amount)) ? `$${parseFloat(amount).toFixed(2)}` : "Now"}
                       </>
                     )}
                   </Button>
 
                   {/* Trust badges */}
-                  <div className="flex items-center justify-center gap-6 pt-2 border-t border-white/5">
-                    <div className="flex items-center gap-1.5 text-white/35 text-xs">
+                  <div className="flex items-center justify-center gap-6 pt-1 border-t border-white/5">
+                    <div className="flex items-center gap-1.5 text-white/30 text-xs">
                       <Lock className="w-3 h-3" />
                       SSL Encrypted
                     </div>
-                    <div className="flex items-center gap-1.5 text-white/35 text-xs">
+                    <div className="flex items-center gap-1.5 text-white/30 text-xs">
                       <ShieldCheck className="w-3 h-3" />
                       Powered by Square
                     </div>
                   </div>
+
                 </form>
               </motion.div>
             )}
@@ -397,7 +406,7 @@ export default function Pay() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-center text-white/40 text-sm mt-6"
+              className="text-center text-white/35 text-sm mt-6"
             >
               Questions about your invoice?{" "}
               <a href="tel:8136578888" className="text-primary hover:text-primary/80 transition-colors">
