@@ -35,12 +35,12 @@ export function Navbar() {
           : "bg-navbar"
       }`}
     >
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+      <div className={`container mx-auto px-4 flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-20" : "h-28"}`}>
         <Link to="/" className="flex items-center gap-3 group" data-testid="link-logo">
-          <div className="bg-primary p-2 rounded-lg group-hover:bg-primary/85 transition-colors shadow-md shadow-primary/30">
-            <Flame className="w-6 h-6 text-white" />
+          <div className={`bg-primary rounded-lg group-hover:bg-primary/85 transition-all duration-300 shadow-md shadow-primary/30 ${isScrolled ? "p-2" : "p-2.5"}`}>
+            <Flame className={`text-white transition-all duration-300 ${isScrolled ? "w-6 h-6" : "w-8 h-8"}`} />
           </div>
-          <span className="font-display font-bold text-lg tracking-tight text-white">
+          <span className={`font-display font-bold tracking-tight text-white transition-all duration-300 ${isScrolled ? "text-lg" : "text-2xl"}`}>
             Brandon Fire & Safety Equipment Co Inc
           </span>
         </Link>

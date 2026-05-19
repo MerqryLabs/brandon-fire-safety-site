@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 pb-32 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center pt-28 pb-32 overflow-hidden">
         {/* Animated Fire Background */}
         <div className="absolute inset-0 z-0 bg-navbar">
           {/* Primary red glow — slow pulse */}
