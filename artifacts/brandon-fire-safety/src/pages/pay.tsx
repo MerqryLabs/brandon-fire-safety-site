@@ -62,51 +62,65 @@ export default function Pay() {
 
   const cardRef = useRef<SquareCard | null>(null);
   const mountedRef = useRef(false);
+  const initializingRef = useRef(false);
 
   const credentialsConfigured = Boolean(SQUARE_APP_ID && SQUARE_LOCATION_ID);
 
   useEffect(() => {
     if (!credentialsConfigured) return;
     mountedRef.current = true;
+    initializingRef.current = false;
 
-    const existing = document.getElementById("square-sdk");
-    if (existing) {
+    // If Square SDK is already on the page and fully loaded, init immediately.
+    if (window.Square) {
       void initSquare();
-      return;
+      return () => {
+        mountedRef.current = false;
+        if (cardRef.current) { cardRef.current.destroy().catch(() => {}); cardRef.current = null; }
+      };
     }
 
-    const script = document.createElement("script");
-    script.id = "square-sdk";
-    script.src = SDK_URL;
-    script.async = true;
-    script.onload = () => { if (mountedRef.current) void initSquare(); };
-    script.onerror = () => {
+    // Otherwise ensure the script tag exists and listen for load/error.
+    let script = document.getElementById("square-sdk") as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "square-sdk";
+      script.src = SDK_URL;
+      script.async = true;
+      document.head.appendChild(script);
+    }
+
+    const handleLoad = () => { if (mountedRef.current) void initSquare(); };
+    const handleError = () => {
       if (mountedRef.current)
         setSdkError("Failed to load payment processor. Please refresh and try again.");
     };
-    document.head.appendChild(script);
+
+    script.addEventListener("load", handleLoad);
+    script.addEventListener("error", handleError);
 
     return () => {
       mountedRef.current = false;
-      if (cardRef.current) {
-        cardRef.current.destroy().catch(() => {});
-        cardRef.current = null;
-      }
+      script!.removeEventListener("load", handleLoad);
+      script!.removeEventListener("error", handleError);
+      if (cardRef.current) { cardRef.current.destroy().catch(() => {}); cardRef.current = null; }
     };
   }, [credentialsConfigured]);
 
   async function initSquare() {
+    if (initializingRef.current || cardRef.current) return;
+    initializingRef.current = true;
     try {
       if (!window.Square) throw new Error("Square SDK not available");
-      if (cardRef.current) return;
       const payments = await window.Square.payments(SQUARE_APP_ID!, SQUARE_LOCATION_ID!);
       const card = await payments.card();
-      if (cardRef.current) { await card.destroy(); return; }
+      if (!mountedRef.current) { await card.destroy(); return; }
       cardRef.current = card;
       await card.attach("#square-card-container");
       if (mountedRef.current) setSdkReady(true);
     } catch (err) {
       console.error("[Square] Init error:", err);
+      initializingRef.current = false;
       if (mountedRef.current)
         setSdkError("Payment widget failed to load. Please refresh and try again.");
     }
