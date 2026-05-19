@@ -12,3 +12,9 @@ id = "5XM7QbA6rZMQV42KtDyBl"
 uri = "file://artifacts/brandon-fire-safety/public/about-image.png"
 type = "image"
 title = "technician plain shirt fire extinguisher"
+
+[[generated]]
+id = "GPI3qhPKv6RScUNgi0uhB"
+uri = "file://artifacts/brandon-fire-safety/public/about-technician.png"
+type = "image"
+title = "plain shirt technician extinguisher"

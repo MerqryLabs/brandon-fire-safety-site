@@ -81,7 +81,7 @@ export default function About() {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/about-image.png" 
+                  src="/about-technician.png" 
                   alt="Professional technician inspecting a fire extinguisher" 
                   className="w-full h-full object-cover"
                 />
