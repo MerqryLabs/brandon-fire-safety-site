@@ -189,6 +189,7 @@ export default function Pay() {
     setSdkReady(false);
     setSdkError(null);
     cardRef.current = null;
+    initializingRef.current = false;
     setTimeout(() => void initSquare(), 150);
   }
 
