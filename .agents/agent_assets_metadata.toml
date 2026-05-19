@@ -1,0 +1,14 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "1e9TbBDx7w51TJiG-hWBR"
+uri = "file://artifacts/brandon-fire-safety/public/hero-bg.png"
+type = "image"
+title = "Hero dark fire safety scene"
+
+[[generated]]
+id = "5XM7QbA6rZMQV42KtDyBl"
+uri = "file://artifacts/brandon-fire-safety/public/about-image.png"
+type = "image"
+title = "About section technician inspecting"
