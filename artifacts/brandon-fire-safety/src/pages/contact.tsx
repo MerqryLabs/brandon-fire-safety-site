@@ -97,17 +97,17 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg mb-3">Business Hours</h3>
-                      <ul className="space-y-2 text-muted-foreground">
-                        <li className="flex justify-between items-center w-48">
-                          <span>Monday – Friday:</span>
+                      <ul className="space-y-3 text-muted-foreground">
+                        <li className="grid grid-cols-[1fr_auto] gap-6 items-center">
+                          <span>Monday – Friday</span>
                           <span className="font-medium text-foreground">9 AM – 5 PM</span>
                         </li>
-                        <li className="flex justify-between items-center w-48">
-                          <span>Saturday:</span>
+                        <li className="grid grid-cols-[1fr_auto] gap-6 items-center">
+                          <span>Saturday</span>
                           <span className="font-medium text-foreground">Closed</span>
                         </li>
-                        <li className="flex justify-between items-center w-48">
-                          <span>Sunday:</span>
+                        <li className="grid grid-cols-[1fr_auto] gap-6 items-center">
+                          <span>Sunday</span>
                           <span className="font-medium text-foreground">Closed</span>
                         </li>
                       </ul>
