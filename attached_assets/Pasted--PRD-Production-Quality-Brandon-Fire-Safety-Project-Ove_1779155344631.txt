@@ -1,0 +1,588 @@
+# PRD: Production-Quality  Brandon Fire & Safety
+
+  
+
+## Project Overview
+
+Build a modern, production-quality single-page local business website for a fire safety company using:
+
+* HTML
+* CSS
+* Vanilla JavaScript
+
+The website should feel:
+
+* Professional
+* Trustworthy
+* Modern
+* Fast
+* Mobile-friendly
+* Optimized for SEO
+* Ready for real client deployment
+
+The project must run immediately inside Replit with zero additional setup.
+
+---
+
+# Business Information
+
+## Google Business Profile Source
+
+Use the following Google Maps profile as the business reference:
+
+https://www.google.com/maps/place/Brandon+Fire+%26+Safety/
+
+Use available information from the profile to recreate:
+
+* Business name
+* Reviews
+* Star rating
+* Address
+* Phone number
+* Business hours
+* Embedded Google Map
+
+If direct live Google review integration is unavailable without API credentials, recreate sample review cards manually and include code comments explaining where Google Places API integration can later be added.
+
+---
+
+# Competitor Research Reference
+
+Use these competitor websites as inspiration for service offerings and structure:
+
+* https://cityfireinc.com/
+* https://fireequipmentsalesandservice.com/
+* https://cityfireinc.com/
+
+DO NOT copy content directly.
+
+Rewrite and modernize all copy to sound:
+
+* Cleaner
+* More professional
+* Easier to read
+* Premium
+* Customer-focused
+
+---
+
+# Technical Stack
+
+Use only:
+
+* HTML5
+* CSS3
+* Vanilla JavaScript
+
+Avoid frameworks unless absolutely necessary.
+
+---
+
+# Required Project Structure
+
+```text
+project-root/
+│
+├── index.html
+├── style.css
+├── script.js
+└── assets/
+```
+
+---
+
+# Website Sections
+
+Create a responsive single-page website with the following sections:
+
+1. Home
+2. About
+3. Reviews
+4. Services
+5. Contact
+
+---
+
+# Navigation Requirements
+
+## Sticky Navigation Bar
+
+Add a sticky navigation bar fixed to the top of the page.
+
+Navigation items:
+
+* Home
+* About
+* Reviews
+* Services
+* Contact
+
+## Smooth Scroll Navigation
+
+When users click a navigation item:
+
+* Smoothly scroll to the matching section
+* Offset correctly for sticky navigation height
+
+## Active Navigation Highlighting
+
+While scrolling:
+
+* Highlight the active navigation link
+* Use JavaScript Intersection Observer or scroll detection
+
+---
+
+# Hero Section (Home)
+
+Create a premium hero section with:
+
+## Required Elements
+
+* Large headline
+* Supporting text
+* CTA button
+* Optional overlay background image or gradient
+
+## Suggested Headline
+
+“Protecting Businesses & Properties With Professional Fire Safety Solutions”
+
+## Suggested Supporting Text
+
+“Trusted fire protection services including inspections, extinguishers, suppression systems, emergency lighting, and code compliance solutions.”
+
+## CTA Buttons
+
+Primary CTA:
+
+* Call Now
+
+Secondary CTA:
+
+* Request Information
+
+## Hero Design Requirements
+
+* Full viewport height
+* Strong typography hierarchy
+* Subtle animations
+* Dark overlay for readability
+* Mobile optimized
+
+---
+
+# About Section
+
+Create a modern about section describing the company.
+
+## Content Direction
+
+Explain that the business provides:
+
+* Fire safety inspections
+* Fire extinguisher services
+* Suppression systems
+* Commercial fire protection
+* Emergency compliance solutions
+* Ongoing maintenance and support
+
+## Tone
+
+* Professional
+* Trustworthy
+* Experienced
+* Community-focused
+
+## Layout
+
+Include:
+
+* Two-column responsive layout
+* Supporting image or placeholder image
+* Soft shadow cards or content blocks
+
+---
+
+# Services Section
+
+Create a professional services grid.
+
+## General Fire Safety Services To Include
+
+* Fire Extinguisher Inspection
+* Fire Extinguisher Recharge
+* Fire Suppression Systems
+* Kitchen Hood Suppression Systems
+* Emergency Exit Lighting
+* Fire Alarm Inspections
+* Code Compliance Assistance
+* Fire Safety Training
+* Commercial Fire Protection
+* Safety Equipment Installation
+* Annual Fire Inspections
+* Maintenance Programs
+
+## Service Card Requirements
+
+Each service card should contain:
+
+* Icon
+* Service title
+* Short description
+* Hover animation
+
+## Layout
+
+* Responsive CSS grid
+* Mobile-first design
+* Equal-height cards
+* Premium spacing
+
+---
+
+# Reviews Section
+
+Create a modern review section inspired by Google reviews.
+
+## Reviews Layout
+
+Use responsive review cards.
+
+Each card should include:
+
+* Reviewer name
+* Star rating
+* Review text
+
+## Example Review Structure
+
+Reviewer Name:
+John M.
+
+Rating:
+★★★★★
+
+Review:
+“Excellent service and professional technicians. Fast response times and very knowledgeable staff.”
+
+## Google Review Integration
+
+If API access is unavailable:
+
+* Create reusable placeholder review card components
+* Add JavaScript comments showing where Google Places API integration can later be connected
+
+Example developer comment:
+
+```js
+// Future Enhancement:
+// Replace static review data with Google Places API integration
+// https://developers.google.com/maps/documentation/places/web-service
+```
+
+## Reviews Design
+
+* Card shadows
+* Rounded corners
+* Scroll reveal animations
+* Responsive carousel or grid layout
+
+---
+
+# Contact Section
+
+DO NOT include a contact form.
+
+## Required Contact Information
+
+Include:
+
+* Business phone number
+* Address
+* Business hours
+* Mobile click-to-call link
+* Embedded Google Map
+
+## Business Hours
+
+Monday – Friday:
+9:00 AM – 5:00 PM
+
+Saturday:
+Closed
+
+Sunday:
+Closed
+
+## Embedded Map
+
+Embed Google Maps using iframe embed from the business Google profile.
+
+## Contact Layout
+
+Use a split layout:
+
+Left side:
+
+* Contact details
+
+Right side:
+
+* Embedded map
+
+---
+
+# UI / UX Design Requirements
+
+The website should visually feel similar to premium local service businesses.
+
+## Design Style
+
+Use:
+
+* Spacious layout
+* Soft shadows
+* Smooth hover effects
+* Rounded corners
+* Clean typography
+* Modern spacing system
+* Professional color palette
+* Sticky navigation
+* Scroll animations
+
+## Responsive Design
+
+Must support:
+
+* Mobile
+* Tablet
+* Desktop
+
+Use mobile-first responsive CSS.
+
+---
+
+# Animation Requirements
+
+Implement subtle professional animations.
+
+## Required Animations
+
+* Smooth scroll
+* Scroll reveal fade-in effects
+* Hover transitions
+* Button hover animations
+* Floating back-to-top button
+* Navigation active-state transitions
+
+---
+
+# Back-To-Top Button
+
+Add a floating button that:
+
+* Appears after scrolling down
+* Smoothly scrolls user back to top
+* Has hover animation
+* Is mobile friendly
+
+---
+
+# Accessibility Requirements
+
+Implement accessibility best practices.
+
+## Required Accessibility Features
+
+* Semantic HTML5
+* Proper heading hierarchy
+* Alt text for images
+* Keyboard navigable links
+* High contrast text
+* Accessible buttons
+* Proper ARIA labels where needed
+
+---
+
+# SEO Requirements
+
+Add SEO metadata to index.html.
+
+## Required Meta Tags
+
+* Meta title
+* Meta description
+* Open Graph title
+* Open Graph description
+* Open Graph image placeholder
+* Viewport meta tag
+
+## Suggested SEO Title
+
+“Brandon Fire & Safety | Commercial Fire Protection Services”
+
+## Suggested Meta Description
+
+“Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions.”
+
+---
+
+# JavaScript Requirements
+
+All JavaScript should live inside:
+
+```text
+script.js
+```
+
+## Features To Implement
+
+* Smooth scrolling
+* Sticky nav behavior
+* Active nav highlighting
+* Scroll reveal animations
+* Mobile nav toggle (hamburger menu)
+* Back-to-top button behavior
+
+Use vanilla JavaScript only.
+
+---
+
+# CSS Requirements
+
+All styling should live inside:
+
+```text
+style.css
+```
+
+## CSS Guidelines
+
+* Use CSS variables for colors
+* Use Flexbox and CSS Grid
+* Organize styles by section
+* Keep spacing consistent
+* Use responsive breakpoints
+
+Suggested sections:
+
+```css
+/* Global Styles */
+/* Navigation */
+/* Hero */
+/* About */
+/* Services */
+/* Reviews */
+/* Contact */
+/* Footer */
+/* Responsive */
+```
+
+---
+
+# Footer Requirements
+
+Create a modern footer containing:
+
+* Business name
+* Copyright
+* Quick navigation links
+* Phone number
+* Address
+
+Example:
+
+© 2026 Brandon Fire & Safety. All rights reserved.
+
+---
+
+# Performance Requirements
+
+Optimize for:
+
+* Fast loading
+* Minimal dependencies
+* Lightweight assets
+* Responsive images
+* Efficient animations
+
+Avoid unnecessary libraries.
+
+---
+
+# Replit Compatibility
+
+The project must:
+
+* Run immediately after clicking “Run”
+* Require no build step
+* Work entirely in browser
+* Be beginner-friendly for future edits
+
+---
+
+# Code Quality Requirements
+
+Include comments explaining:
+
+* Major sections
+* Editable content areas
+* Future API integration locations
+* Responsive breakpoints
+* Animation logic
+
+Keep all code clean and production-ready.
+
+---
+
+# Final Deliverables
+
+Generate complete working versions of:
+
+## index.html
+
+Contains:
+
+* Semantic structure
+* SEO tags
+* All sections
+* Embedded map
+* Navigation
+* Accessibility structure
+
+## style.css
+
+Contains:
+
+* Responsive design
+* Animations
+* Layout styling
+* Mobile optimizations
+* Hover states
+
+## script.js
+
+Contains:
+
+* Smooth scrolling
+* Active nav logic
+* Reveal animations
+* Back-to-top button
+* Mobile navigation
+
+---
+
+# Final Goal
+
+The completed website should feel like a real premium local fire safety company website ready for deployment with minimal additional work.
+
+The overall experience should communicate:
+
+* Trust
+* Professionalism
+* Safety
+* Reliability
+* Modern service quality
+
+The final result should look polished enough to confidently present to a real paying client.
