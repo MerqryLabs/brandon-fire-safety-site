@@ -31,8 +31,8 @@ export function Navbar() {
     <header
       className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#0f0f0f]/97 backdrop-blur-md shadow-lg shadow-black/30"
-          : "bg-[#0f0f0f]"
+          ? "bg-navbar/97 backdrop-blur-md shadow-lg shadow-black/30"
+          : "bg-navbar"
       }`}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
@@ -106,7 +106,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0f0f0f] border-t border-white/10 overflow-hidden"
+            className="md:hidden bg-navbar border-t border-white/10 overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               <ul className="flex flex-col gap-1">

@@ -45,7 +45,7 @@ export default function Reviews() {
   return (
     <Layout>
       {/* Header */}
-      <section className="bg-[#111111] py-24 border-b border-white/10 relative overflow-hidden">
+      <section className="bg-surface py-24 border-b border-white/10 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-primary" />
         <div
           className="absolute inset-0 opacity-15"

@@ -80,7 +80,7 @@ export default function Services() {
   return (
     <Layout>
       {/* Header — dark, fire-themed */}
-      <section className="bg-[#111111] py-24 border-b border-white/10 relative overflow-hidden">
+      <section className="bg-surface py-24 border-b border-white/10 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -134,7 +134,7 @@ export default function Services() {
       </section>
 
       {/* Call to action — dark with red glow */}
-      <section className="py-20 bg-[#0f0f0f] border-t border-white/10 relative overflow-hidden">
+      <section className="py-20 bg-navbar border-t border-white/10 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-25"
           style={{

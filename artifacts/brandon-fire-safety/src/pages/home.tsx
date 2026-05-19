@@ -18,7 +18,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-32 overflow-hidden">
         {/* Animated Fire Background */}
-        <div className="absolute inset-0 z-0 bg-[#0d0d0d]">
+        <div className="absolute inset-0 z-0 bg-navbar">
           {/* Primary red glow — slow pulse */}
           <motion.div
             className="absolute inset-0"
@@ -114,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* Trust Bar */}
-      <section className="bg-[#111111] border-y border-white/8 relative z-20">
+      <section className="bg-surface border-y border-white/8 relative z-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10">
             {[
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#0f0f0f] text-white relative overflow-hidden">
+      <section className="py-24 bg-navbar text-white relative overflow-hidden">
         {/* Subtle red glow background */}
         <div
           className="absolute inset-0 opacity-30"
