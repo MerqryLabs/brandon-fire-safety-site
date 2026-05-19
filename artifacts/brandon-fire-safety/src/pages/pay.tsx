@@ -88,15 +88,20 @@ export default function Pay() {
 
     return () => {
       mountedRef.current = false;
-      cardRef.current?.destroy().catch(() => {});
+      if (cardRef.current) {
+        cardRef.current.destroy().catch(() => {});
+        cardRef.current = null;
+      }
     };
   }, [credentialsConfigured]);
 
   async function initSquare() {
     try {
       if (!window.Square) throw new Error("Square SDK not available");
+      if (cardRef.current) return;
       const payments = await window.Square.payments(SQUARE_APP_ID!, SQUARE_LOCATION_ID!);
       const card = await payments.card();
+      if (cardRef.current) { await card.destroy(); return; }
       cardRef.current = card;
       await card.attach("#square-card-container");
       if (mountedRef.current) setSdkReady(true);
@@ -356,24 +361,20 @@ export default function Pay() {
                         Card Information
                       </span>
                     </label>
-                    <div
-                      className={`rounded-xl border min-h-[56px] transition-colors ${
-                        sdkReady ? "border-white/15" : "border-white/10 bg-white/[0.03]"
-                      }`}
-                    >
-                      <div id="square-card-container" className="w-full" />
+                    <div>
                       {!sdkReady && !sdkError && (
-                        <div className="flex items-center justify-center gap-2 text-white/35 text-sm py-4">
+                        <div className="flex items-center justify-center gap-2 text-white/35 text-sm py-4 rounded-xl border border-white/10 bg-white/[0.03]">
                           <Loader2 className="w-4 h-4 animate-spin" />
                           Loading secure card form…
                         </div>
                       )}
                       {sdkError && (
-                        <div className="flex items-center gap-2 text-red-400 text-sm py-4 px-4">
+                        <div className="flex items-center gap-2 text-red-400 text-sm py-4 px-4 rounded-xl border border-red-500/20 bg-red-500/10">
                           <AlertCircle className="w-4 h-4 shrink-0" />
                           {sdkError}
                         </div>
                       )}
+                      <div id="square-card-container" className="w-full" />
                     </div>
                   </div>
 
