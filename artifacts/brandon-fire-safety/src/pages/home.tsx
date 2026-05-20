@@ -96,7 +96,7 @@ export default function Home() {
                   className="text-base font-semibold bg-primary hover:bg-primary/90 text-white border-0 shadow-xl shadow-primary/40"
                   data-testid="button-hero-call"
                 >
-                  <a href="tel:8136578888">Call Now: (813) 657-8888</a>
+                  <a href="tel:8136519191">Call Now: (813) 651-9191</a>
                 </Button>
                 <Button
                   asChild
@@ -217,7 +217,7 @@ export default function Home() {
                 className="font-semibold bg-primary hover:bg-primary/90 text-white border-0 shadow-xl shadow-primary/40"
                 data-testid="button-cta-call"
               >
-                <a href="tel:8136578888">Call (813) 657-8888</a>
+                <a href="tel:8136519191">Call (813) 651-9191</a>
               </Button>
               <Button
                 asChild

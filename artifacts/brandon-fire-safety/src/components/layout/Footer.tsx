@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Clock, ShieldCheck, Flame } from "lucide-react";
+import { MapPin, Phone, Clock, ShieldCheck, Flame, Mail } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -83,8 +83,17 @@ export function Footer() {
                 <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-white mb-1">Phone</p>
-                  <a href="tel:8136578888" className="hover:text-primary transition-colors" data-testid="link-footer-phone">
-                    (813) 657-8888
+                  <a href="tel:8136519191" className="hover:text-primary transition-colors" data-testid="link-footer-phone">
+                    (813) 651-9191
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 text-secondary-foreground/80">
+                <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-white mb-1">Email</p>
+                  <a href="mailto:Yudaman911@aol.com" className="hover:text-primary transition-colors break-all">
+                    Yudaman911@aol.com
                   </a>
                 </div>
               </li>

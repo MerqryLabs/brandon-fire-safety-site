@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
-import { Phone, MapPin, Clock, Navigation } from "lucide-react";
+import { Phone, MapPin, Clock, Navigation, Mail } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Contact() {
   useSEO({
     title: "Contact Us | Brandon Fire & Safety Equipment Co Inc",
-    description: "Contact Brandon Fire & Safety Equipment Co Inc at (813) 657-8888. Located at 4107 Cragmont Drive, Tampa, FL 33610. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
+    description: "Contact Brandon Fire & Safety Equipment Co Inc at (813) 651-9191. Located at 4107 Cragmont Drive, Tampa, FL 33610. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
     canonical: "https://brandonfiresafety.com/contact",
     ogImage: "https://brandonfiresafety.com/opengraph.jpg",
     ogUrl: "https://brandonfiresafety.com/contact",
@@ -66,10 +66,25 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                      <a href="tel:8136578888" className="text-2xl font-display font-bold text-foreground hover:text-primary transition-colors">
-                        (813) 657-8888
+                      <a href="tel:8136519191" className="text-2xl font-display font-bold text-foreground hover:text-primary transition-colors">
+                        (813) 651-9191
                       </a>
                       <p className="text-sm text-muted-foreground mt-1">Available for emergency service</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-border/50 shadow-sm hover:shadow-md transition-shadow" data-testid="card-contact-email">
+                  <CardContent className="p-6 flex items-start gap-4">
+                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg mb-1">Email</h3>
+                      <a href="mailto:Yudaman911@aol.com" className="text-lg font-medium text-foreground hover:text-primary transition-colors break-all">
+                        Yudaman911@aol.com
+                      </a>
+                      <p className="text-sm text-muted-foreground mt-1">We'll respond as soon as possible</p>
                     </div>
                   </CardContent>
                 </Card>

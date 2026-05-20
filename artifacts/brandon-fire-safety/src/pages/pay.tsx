@@ -231,11 +231,11 @@ export default function Pay() {
                   Our online payment portal is being finalized. In the meantime, please call us to pay your invoice over the phone.
                 </p>
                 <a
-                  href="tel:8136578888"
+                  href="tel:8136519191"
                   className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  Call (813) 657-8888
+                  Call (813) 651-9191
                 </a>
               </motion.div>
 
@@ -455,8 +455,8 @@ export default function Pay() {
               className="text-center text-white/35 text-sm mt-6"
             >
               Questions about your invoice?{" "}
-              <a href="tel:8136578888" className="text-primary hover:text-primary/80 transition-colors">
-                Call (813) 657-8888
+              <a href="tel:8136519191" className="text-primary hover:text-primary/80 transition-colors">
+                Call (813) 651-9191
               </a>
             </motion.p>
           </div>

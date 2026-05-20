@@ -70,8 +70,8 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <div className="text-right hidden lg:block">
               <p className="text-xs text-white/50 font-medium uppercase tracking-wider">24/7 Emergency</p>
-              <a href="tel:8136578888" className="font-display font-bold text-white hover:text-primary transition-colors">
-                (813) 657-8888
+              <a href="tel:8136519191" className="font-display font-bold text-white hover:text-primary transition-colors">
+                (813) 651-9191
               </a>
             </div>
             <Button
@@ -92,7 +92,7 @@ export function Navbar() {
               className="font-semibold bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/40 border-0"
               data-testid="button-nav-call"
             >
-              <a href="tel:8136578888">
+              <a href="tel:8136519191">
                 <Phone className="w-4 h-4 mr-1.5" />
                 Call Now
               </a>
@@ -153,8 +153,8 @@ export function Navbar() {
               <div className="pt-4 flex flex-col gap-3">
                 <div className="text-center">
                   <p className="text-sm text-white/50 font-medium uppercase tracking-wider mb-1">24/7 Emergency</p>
-                  <a href="tel:8136578888" className="font-display font-bold text-2xl text-white">
-                    (813) 657-8888
+                  <a href="tel:8136519191" className="font-display font-bold text-2xl text-white">
+                    (813) 651-9191
                   </a>
                 </div>
                 <Button
@@ -170,7 +170,7 @@ export function Navbar() {
                   </Link>
                 </Button>
                 <Button asChild size="lg" className="w-full font-semibold bg-primary hover:bg-primary/90 text-white border-0" data-testid="button-mobile-call">
-                  <a href="tel:8136578888">Call Now</a>
+                  <a href="tel:8136519191">Call Now</a>
                 </Button>
               </div>
             </div>
