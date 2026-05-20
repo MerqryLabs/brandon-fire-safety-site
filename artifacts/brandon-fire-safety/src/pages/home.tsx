@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Clock, Award, CheckCircle2, FlameKindling, Zap, Flame } from "lucide-react";
+import { ArrowRight, ShieldCheck, Clock, Award, CheckCircle2, FlameKindling, Zap, PackagePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -168,19 +168,19 @@ export default function Home() {
               index={0}
               icon={<FlameKindling className="w-7 h-7" />}
               title="Fire Extinguisher Services"
-              description="Complete inspection, testing, recharging, and certification of all commercial fire extinguishers."
+              description="Inspection, recharging, and hydrostatic testing to keep every extinguisher fully certified and ready."
             />
             <ServiceCard
               index={1}
-              icon={<Flame className="w-7 h-7" />}
-              title="Suppression Systems"
-              description="Installation and maintenance of kitchen hood and industrial fire suppression systems."
+              icon={<PackagePlus className="w-7 h-7" />}
+              title="Extinguisher Sales"
+              description="New and quality reconditioned fire extinguishers — all types, inspected and certified to NFPA standards."
             />
             <ServiceCard
               index={2}
               icon={<Zap className="w-7 h-7" />}
-              title="Emergency Exit Lighting"
-              description="Monthly and annual testing, battery replacement, and repair of emergency exit signs."
+              title="Emergency Lighting"
+              description="Installation, testing, battery replacement, and repair of emergency egress lighting and exit signs."
             />
           </div>
 

@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
 import { 
-  FlameKindling, Flame, Zap, ShieldAlert, FileCheck2, 
-  GraduationCap, Building2, HardHat, CalendarCheck, Wrench, Bell, ShieldCheck
+  FlameKindling, Flame, Zap, FileCheck2, Wrench, ShieldCheck, PackageOpen, PackagePlus
 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -10,65 +9,40 @@ import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    title: "Fire Extinguisher Inspection",
-    description: "Comprehensive visual and physical inspections to ensure your extinguishers are charged, accessible, and fully operational.",
+    title: "Fire Extinguisher Inspection & Service",
+    description: "Thorough annual and monthly inspections to ensure every extinguisher is fully charged, properly tagged, and ready for immediate use.",
     icon: <FlameKindling className="w-7 h-7" />
   },
   {
-    title: "Fire Extinguisher Recharge",
-    description: "Professional recharging services after use or during required maintenance intervals to keep units ready.",
+    title: "Fire Extinguisher Recharging",
+    description: "Fast, professional recharging after any use or when pressure drops below rated levels — restoring units to full operational status.",
     icon: <Wrench className="w-7 h-7" />
   },
   {
-    title: "Fire Suppression Systems",
-    description: "Installation, inspection, and maintenance of clean agent and industrial fire suppression systems.",
-    icon: <ShieldCheck className="w-7 h-7" />
-  },
-  {
-    title: "Kitchen Hood Suppression",
-    description: "Specialized protection for commercial kitchens. We test, clean, and maintain your restaurant's vital suppression systems.",
-    icon: <Flame className="w-7 h-7" />
-  },
-  {
-    title: "Emergency Exit Lighting",
-    description: "Routine testing, bulb replacement, and battery service for emergency egress lighting and exit signs.",
-    icon: <Zap className="w-7 h-7" />
-  },
-  {
-    title: "Fire Alarm Inspections",
-    description: "Thorough testing of your building's fire alarm control panels, smoke detectors, and notification devices.",
-    icon: <Bell className="w-7 h-7" />
-  },
-  {
-    title: "Code Compliance Assistance",
-    description: "Expert guidance to navigate complex NFPA codes and local fire marshal requirements to avoid fines.",
+    title: "Hydrostatic Testing",
+    description: "Certified hydrostatic pressure testing for fire extinguisher cylinders to meet NFPA 10 and DOT requirements. We test, certify, and document.",
     icon: <FileCheck2 className="w-7 h-7" />
   },
   {
-    title: "Fire Safety Training",
-    description: "Hands-on, professional training for your staff on the proper and safe use of fire safety equipment.",
-    icon: <GraduationCap className="w-7 h-7" />
+    title: "New Extinguisher Sales",
+    description: "We carry and sell new fire extinguishers of all types — ABC dry chemical, CO₂, wet chemical, and more — for any commercial or residential need.",
+    icon: <PackagePlus className="w-7 h-7" />
   },
   {
-    title: "Commercial Fire Protection",
-    description: "End-to-end fire safety planning and equipment provision for commercial facilities of all sizes.",
-    icon: <Building2 className="w-7 h-7" />
+    title: "Reconditioned Extinguisher Sales",
+    description: "Quality reconditioned fire extinguishers inspected, recharged, and certified to NFPA standards — a cost-effective alternative to new units.",
+    icon: <PackageOpen className="w-7 h-7" />
   },
   {
-    title: "Safety Equipment Installation",
-    description: "Expert placement and mounting of cabinets, brackets, signs, and physical safety barriers.",
-    icon: <HardHat className="w-7 h-7" />
+    title: "Emergency Lighting Installation",
+    description: "Professional installation of emergency egress lighting and exit signs to meet code requirements for commercial and industrial facilities.",
+    icon: <Zap className="w-7 h-7" />
   },
   {
-    title: "Annual Fire Inspections",
-    description: "Scheduled, recurring total-facility compliance checks to keep your certifications up to date effortlessly.",
-    icon: <CalendarCheck className="w-7 h-7" />
+    title: "Emergency Lighting Service",
+    description: "Routine monthly and annual testing, battery replacement, bulb service, and repair of emergency exit lighting systems.",
+    icon: <ShieldCheck className="w-7 h-7" />
   },
-  {
-    title: "Maintenance Programs",
-    description: "Customized preventative maintenance contracts that take the guesswork out of fire safety management.",
-    icon: <ShieldAlert className="w-7 h-7" />
-  }
 ];
 
 export default function Services() {
