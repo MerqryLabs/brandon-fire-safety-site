@@ -205,7 +205,7 @@ export default function Home() {
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Flame className="w-12 h-12 text-primary mx-auto mb-6 drop-shadow-[0_0_12px_rgba(220,20,20,0.8)]" />
+            <FlameKindling className="w-12 h-12 text-primary mx-auto mb-6 drop-shadow-[0_0_12px_rgba(220,20,20,0.8)]" />
             <h2 className="text-4xl font-display font-bold mb-6">Need an Inspection or Service?</h2>
             <p className="text-xl text-white/75 mb-10">
               Don't wait until it's too late. Ensure your business is compliant and protected today with Brandon Fire & Safety Equipment Co Inc.

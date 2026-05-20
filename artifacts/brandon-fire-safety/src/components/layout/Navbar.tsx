@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Flame, Phone, CreditCard } from "lucide-react";
+import { Menu, X, Phone, CreditCard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -37,9 +37,11 @@ export function Navbar() {
     >
       <div className={`container mx-auto px-4 flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-20" : "h-28"}`}>
         <Link to="/" className="flex items-center gap-3 group" data-testid="link-logo">
-          <div className={`bg-primary rounded-lg group-hover:bg-primary/85 transition-all duration-300 shadow-md shadow-primary/30 ${isScrolled ? "p-2" : "p-2.5"}`}>
-            <Flame className={`text-white transition-all duration-300 ${isScrolled ? "w-6 h-6" : "w-8 h-8"}`} />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Brandon Fire & Safety logo"
+            className={`rounded-lg object-contain bg-white transition-all duration-300 ${isScrolled ? "h-12 w-12" : "h-16 w-16"}`}
+          />
           <span className={`font-display font-bold tracking-tight text-white transition-all duration-300 ${isScrolled ? "text-lg" : "text-2xl"}`}>
             Brandon Fire & Safety Equipment Co Inc
           </span>

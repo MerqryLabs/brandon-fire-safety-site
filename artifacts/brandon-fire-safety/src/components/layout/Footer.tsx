@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Clock, ShieldCheck, Flame, Mail } from "lucide-react";
+import { MapPin, Phone, Clock, ShieldCheck, Mail } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,9 +11,11 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group" data-testid="link-footer-logo">
-              <div className="bg-primary p-2 rounded-lg">
-                <Flame className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Brandon Fire & Safety logo"
+                className="h-14 w-14 rounded-lg object-contain bg-white"
+              />
               <span className="font-display font-bold text-xl tracking-tight">
                 Brandon Fire & Safety Equipment Co Inc
               </span>
