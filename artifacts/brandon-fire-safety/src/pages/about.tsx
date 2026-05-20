@@ -8,7 +8,7 @@ import { Layout } from "@/components/layout/Layout";
 export default function About() {
   useSEO({
     title: "About Us | Brandon Fire & Safety Equipment Co Inc",
-    description: "Learn about Brandon Fire & Safety Equipment Co Inc — a trusted commercial fire protection company serving Tampa, FL with licensed inspections, suppression systems, and code compliance solutions.",
+    description: "Learn about Brandon Fire & Safety Equipment Co Inc — a trusted fire extinguisher inspection, recharging, hydrostatic testing, and emergency lighting company serving Tampa, FL.",
     canonical: "https://brandonfiresafety.com/about",
     ogImage: "https://brandonfiresafety.com/opengraph.jpg",
     ogUrl: "https://brandonfiresafety.com/about",
@@ -58,7 +58,7 @@ export default function About() {
                   At Brandon Fire & Safety Equipment Co Inc, we understand that protecting your business, employees, and customers is your top priority. That makes it our top priority, too.
                 </p>
                 <p>
-                  Based in Tampa, FL, we provide comprehensive commercial fire protection services designed to keep your facility compliant, safe, and prepared for any emergency. From routine annual inspections to complex kitchen hood suppression systems, our certified technicians handle it all with precision and professionalism.
+                  Based in Tampa, FL, we provide fire extinguisher inspection, service, recharging, and hydrostatic testing — along with new and reconditioned extinguisher sales, cabinet installation, and emergency lighting installation and service. Our certified technicians handle it all with precision and professionalism.
                 </p>
                 <p>
                   We don't just sell equipment; we provide peace of mind. When you partner with us, you're getting a dedicated team that shows up on time, performs the job correctly the first time, and maintains meticulous records of your compliance status.

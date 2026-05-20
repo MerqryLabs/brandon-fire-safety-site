@@ -15,7 +15,7 @@ const reviews = [
   {
     name: "Sandra R.",
     rating: 5,
-    text: "Brandon Fire & Safety Equipment Co Inc handled our restaurant's kitchen hood suppression inspection quickly and thoroughly. We passed code without any issues."
+    text: "Had all our extinguishers recharged and recertified by Brandon Fire & Safety. Fast turnaround, fair pricing, and the tech was thorough. Couldn't ask for better service."
   },
   {
     name: "Mike T.",
