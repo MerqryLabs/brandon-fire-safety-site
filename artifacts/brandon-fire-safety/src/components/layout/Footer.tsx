@@ -59,11 +59,12 @@ export function Footer() {
             <h3 className="font-display font-semibold text-lg mb-6 tracking-tight">Core Services</h3>
             <ul className="space-y-3">
               {[
-                "Extinguisher Inspections",
-                "Suppression Systems",
-                "Kitchen Hood Systems",
+                "Extinguisher Inspection & Service",
+                "Extinguisher Recharging",
+                "Hydrostatic Testing",
+                "Extinguisher Sales (New & Reconditioned)",
                 "Emergency Lighting",
-                "Code Compliance",
+                "Extinguisher Cabinet Sales & Install",
               ].map((service) => (
                 <li key={service} className="text-secondary-foreground/80">
                   {service}
