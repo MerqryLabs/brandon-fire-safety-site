@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
 import { 
-  FlameKindling, Flame, Zap, FileCheck2, Wrench, ShieldCheck, PackageOpen, PackagePlus
+  FlameKindling, Flame, Zap, FileCheck2, Wrench, ShieldCheck, PackageOpen, PackagePlus, Archive
 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -42,6 +42,11 @@ const services = [
     title: "Emergency Lighting Service",
     description: "Routine monthly and annual testing, battery replacement, bulb service, and repair of emergency exit lighting systems.",
     icon: <ShieldCheck className="w-7 h-7" />
+  },
+  {
+    title: "Fire Extinguisher Cabinet Sales & Installation",
+    description: "We sell and professionally install fire extinguisher cabinets — surface-mount and recessed — ensuring proper placement and code-compliant accessibility.",
+    icon: <Archive className="w-7 h-7" />
   },
 ];
 
