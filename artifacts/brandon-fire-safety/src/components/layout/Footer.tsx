@@ -39,7 +39,6 @@ export function Footer() {
                 { name: "Services", href: "/services" },
                 { name: "Customer Reviews", href: "/reviews" },
                 { name: "Contact", href: "/contact" },
-                { name: "Pay My Bill", href: "/pay" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link

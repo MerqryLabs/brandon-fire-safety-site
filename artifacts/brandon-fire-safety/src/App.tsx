@@ -11,7 +11,6 @@ import About from "@/pages/about";
 import Services from "@/pages/services";
 import Reviews from "@/pages/reviews";
 import Contact from "@/pages/contact";
-import Pay from "@/pages/pay";
 
 const queryClient = new QueryClient();
 
@@ -48,7 +47,6 @@ function AnimatedRoutes() {
             <Route path="/services" element={<Services />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/pay" element={<Pay />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </motion.div>
