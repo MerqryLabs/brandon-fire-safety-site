@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
 import { 
-  FlameKindling, Flame, Zap, FileCheck2, Wrench, ShieldCheck, PackageOpen, PackagePlus, Archive
+  FlameKindling, Flame, Zap, FileCheck2, Wrench, ShieldCheck, PackageOpen, PackagePlus, Archive, Bell
 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -53,7 +53,7 @@ const services = [
 export default function Services() {
   useSEO({
     title: "Our Services | Brandon Fire & Safety Equipment Co Inc",
-    description: "Comprehensive fire safety services in Tampa, FL — extinguisher inspections, suppression systems, kitchen hood suppression, emergency lighting, alarm inspections, code compliance, and more.",
+    description: "Comprehensive fire safety services in Tampa, FL — extinguisher inspections, recharging, hydrostatic testing, emergency lighting, cabinet installation, and more.",
     canonical: "https://brandonfiresafety.com/services",
     ogImage: "https://brandonfiresafety.com/opengraph.jpg",
     ogUrl: "https://brandonfiresafety.com/services",
@@ -111,6 +111,31 @@ export default function Services() {
                 icon={service.icon}
               />
             ))}
+            {/* Coming Soon */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: services.length * 0.1 }}
+              className="relative"
+            >
+              <div className="h-full border border-dashed border-primary/40 bg-primary/5 rounded-xl p-8 flex flex-col opacity-80">
+                <div className="absolute top-3 right-3">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary text-white tracking-wide uppercase">
+                    Coming Soon
+                  </span>
+                </div>
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <Bell className="w-7 h-7" />
+                </div>
+                <h3 className="font-display font-semibold text-xl mb-3 text-foreground">
+                  Fire Alarm Service & Testing
+                </h3>
+                <p className="text-muted-foreground leading-relaxed flex-1">
+                  Annual inspection, functional testing, and servicing of commercial fire alarm systems — coming soon to Brandon Fire & Safety.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

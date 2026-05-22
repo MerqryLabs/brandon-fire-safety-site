@@ -86,7 +86,7 @@ export default function Home() {
                 Fire Safety Solutions
               </h1>
               <p className="text-lg md:text-xl text-white/75 mb-10 max-w-2xl leading-relaxed">
-                Trusted fire protection services including inspections, extinguishers, suppression systems, emergency lighting, and code compliance solutions for commercial properties in Tampa, FL.
+                Trusted fire protection services including inspections, extinguishers, emergency lighting, and cabinet installation for commercial properties in Tampa, FL.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
