@@ -39,7 +39,7 @@ export function Navbar() {
         <Link to="/" className="flex items-center gap-3 group" data-testid="link-logo">
           <img
             src="/logo.png"
-            alt="Brandon Fire & Safety logo"
+            alt="Brandon Fire & Safety Equipment Co Inc logo"
             className={`rounded-lg object-contain bg-white transition-all duration-300 ${isScrolled ? "h-12 w-12" : "h-16 w-16"}`}
           />
           <span className={`font-display font-bold tracking-tight text-white transition-all duration-300 ${isScrolled ? "text-lg" : "text-2xl"}`}>

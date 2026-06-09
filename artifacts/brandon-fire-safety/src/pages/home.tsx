@@ -9,7 +9,7 @@ import { useSEO } from "@/hooks/use-seo";
 export default function Home() {
   useSEO({
     title: "Brandon Fire & Safety Equipment Co Inc | Tampa, FL",
-    description: "Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions in Tampa, FL.",
+    description: "Brandon Fire & Safety Equipment Co Inc provides fire extinguisher inspections, maintenance, tagging, and safety equipment services in Tampa, FL.",
     canonical: "https://brandonfiresafety.com/",
     ogImage: "https://brandonfiresafety.com/opengraph.jpg",
     ogUrl: "https://brandonfiresafety.com/",
@@ -73,18 +73,22 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary text-white font-semibold text-sm mb-6 border border-primary/60 shadow-lg shadow-primary/30"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary text-white font-semibold text-sm mb-6 border border-primary/60 shadow-lg shadow-primary/30">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Licensed & Insured in Florida</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-6 text-white drop-shadow-lg">
-                Protecting Businesses &amp; Properties With{" "}
-                <span className="text-primary drop-shadow-[0_0_20px_rgba(220,20,20,0.8)]">
-                  Professional
-                </span>{" "}
-                Fire Safety Solutions
-              </h1>
+              <ShieldCheck className="w-4 h-4" />
+              <span>Licensed & Insured in Florida</span>
+            </motion.div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-6 text-white drop-shadow-lg">
+              Fire Extinguisher Inspections &amp; Safety Equipment in{" "}
+              <span className="text-primary drop-shadow-[0_0_20px_rgba(220,20,20,0.8)]">
+                Tampa, FL
+              </span>
+            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+            >
               <p className="text-lg md:text-xl text-white/75 mb-10 max-w-2xl leading-relaxed">
                 Trusted fire protection services including inspections, extinguishers, emergency lighting, and cabinet installation for commercial properties in Tampa, FL.
               </p>

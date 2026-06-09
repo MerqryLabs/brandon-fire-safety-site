@@ -13,7 +13,7 @@ export function Footer() {
             <Link to="/" className="flex items-center gap-2 group" data-testid="link-footer-logo">
               <img
                 src="/logo.png"
-                alt="Brandon Fire & Safety logo"
+                alt="Brandon Fire & Safety Equipment Co Inc logo"
                 className="h-14 w-14 rounded-lg object-contain bg-white"
               />
               <span className="font-display font-bold text-xl tracking-tight">
