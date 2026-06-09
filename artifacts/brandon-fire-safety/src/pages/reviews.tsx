@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
+import { seoByPath } from "@/lib/seo";
 import { Layout } from "@/components/layout/Layout";
 import { ReviewCard } from "@/components/ReviewCard";
 import { Button } from "@/components/ui/button";
@@ -35,13 +36,7 @@ const reviews = [
 ];
 
 export default function Reviews() {
-  useSEO({
-    title: "Customer Reviews | Brandon Fire & Safety Equipment Co Inc",
-    description: "Read what customers say about Brandon Fire & Safety Equipment Co Inc. Trusted fire safety inspections and services in Tampa, FL with 5-star reviews from local businesses.",
-    canonical: "https://brandonfiresafety.com/reviews",
-    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
-    ogUrl: "https://brandonfiresafety.com/reviews",
-  });
+  useSEO(seoByPath["/reviews"]);
 
   const averageRating = (reviews.reduce((acc, rev) => acc + rev.rating, 0) / reviews.length).toFixed(1);
 

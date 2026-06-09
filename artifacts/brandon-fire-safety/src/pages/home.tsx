@@ -5,15 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { ServiceCard } from "@/components/ServiceCard";
 import { useSEO } from "@/hooks/use-seo";
+import { seoByPath } from "@/lib/seo";
 
 export default function Home() {
-  useSEO({
-    title: "Brandon Fire & Safety Equipment Co Inc | Tampa, FL",
-    description: "Brandon Fire & Safety Equipment Co Inc provides fire extinguisher inspections, maintenance, tagging, and safety equipment services in Tampa, FL.",
-    canonical: "https://brandonfiresafety.com/",
-    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
-    ogUrl: "https://brandonfiresafety.com/",
-  });
+  useSEO(seoByPath["/"]);
 
   return (
     <Layout>

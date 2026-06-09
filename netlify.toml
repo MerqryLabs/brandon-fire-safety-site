@@ -3,7 +3,7 @@
   command = "pnpm build"
   publish = "dist/public"
 
-[[redirects]]
-  from   = "/*"
-  to     = "/index.html"
-  status = 200
+# No SPA catch-all rewrite: every route is prerendered to its own static HTML
+# file (see scripts/prerender.mjs), so Netlify serves each page directly and
+# returns the prerendered 404.html (with a real 404 status) for unknown URLs.
+# In-app navigation is still handled client-side by React Router.

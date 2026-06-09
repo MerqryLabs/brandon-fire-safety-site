@@ -1,17 +1,12 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
+import { seoByPath } from "@/lib/seo";
 import { Phone, MapPin, Clock, Navigation, Mail } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Contact() {
-  useSEO({
-    title: "Contact Us | Brandon Fire & Safety Equipment Co Inc",
-    description: "Contact Brandon Fire & Safety Equipment Co Inc at (813) 651-9191. Located at 4107 Cragmont Drive, Tampa, FL 33610. Open Monday–Friday 9AM–5PM. Schedule an inspection or request emergency service.",
-    canonical: "https://brandonfiresafety.com/contact",
-    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
-    ogUrl: "https://brandonfiresafety.com/contact",
-  });
+  useSEO(seoByPath["/contact"]);
 
   return (
     <Layout>

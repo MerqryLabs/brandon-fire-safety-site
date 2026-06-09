@@ -1,0 +1,1 @@
+- [Brandon Fire & Safety prerendering](brandon-fire-safety-prerender.md) — SPA is prerendered per-route for SEO; createRoot (not hydrate), strip framer-motion opacity:0, ONE h1/title, NO Netlify catch-all (soft-404).

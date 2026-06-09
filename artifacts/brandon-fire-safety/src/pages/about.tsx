@@ -1,4 +1,5 @@
 import { useSEO } from "@/hooks/use-seo";
+import { seoByPath } from "@/lib/seo";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Users, Target } from "lucide-react";
@@ -6,13 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 
 export default function About() {
-  useSEO({
-    title: "About Us | Brandon Fire & Safety Equipment Co Inc",
-    description: "Learn about Brandon Fire & Safety Equipment Co Inc — a trusted fire extinguisher inspection, recharging, hydrostatic testing, and emergency lighting company serving Tampa, FL.",
-    canonical: "https://brandonfiresafety.com/about",
-    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
-    ogUrl: "https://brandonfiresafety.com/about",
-  });
+  useSEO(seoByPath["/about"]);
 
   return (
     <Layout>

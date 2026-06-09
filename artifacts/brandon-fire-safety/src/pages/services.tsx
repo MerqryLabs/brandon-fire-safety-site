@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useSEO } from "@/hooks/use-seo";
+import { seoByPath } from "@/lib/seo";
 import { 
   FlameKindling, Flame, Zap, FileCheck2, Wrench, ShieldCheck, PackageOpen, PackagePlus, Archive, Bell
 } from "lucide-react";
@@ -51,13 +52,7 @@ const services = [
 ];
 
 export default function Services() {
-  useSEO({
-    title: "Our Services | Brandon Fire & Safety Equipment Co Inc",
-    description: "Comprehensive fire safety services in Tampa, FL — extinguisher inspections, recharging, hydrostatic testing, emergency lighting, cabinet installation, and more.",
-    canonical: "https://brandonfiresafety.com/services",
-    ogImage: "https://brandonfiresafety.com/opengraph.jpg",
-    ogUrl: "https://brandonfiresafety.com/services",
-  });
+  useSEO(seoByPath["/services"]);
 
   return (
     <Layout>
