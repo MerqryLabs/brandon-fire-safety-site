@@ -8,7 +8,7 @@ import { useSEO } from "@/hooks/use-seo";
 
 export default function Home() {
   useSEO({
-    title: "Brandon Fire & Safety Equipment Co Inc | Commercial Fire Protection Services",
+    title: "Brandon Fire & Safety Equipment Co Inc | Tampa, FL",
     description: "Professional fire safety services including extinguisher inspections, suppression systems, emergency lighting, and code compliance solutions in Tampa, FL.",
     canonical: "https://brandonfiresafety.com/",
     ogImage: "https://brandonfiresafety.com/opengraph.jpg",
