@@ -1,0 +1,116 @@
+Fix and improve the homepage SEO crawlability for the Brandon Fire & Safety Equipment Co Inc website.
+
+Primary issue:
+The homepage is missing or not exposing a proper visible <h1> tag for Bingbot and SEO scanners.
+
+Current SEO title:
+Brandon Fire & Safety Equipment Co Inc | Tampa, FL
+
+Do not replace this title with a longer title. Keep this exact title because it is under 70 characters and already includes the business name and location.
+
+Recommended homepage H1:
+Fire Extinguisher Inspections & Safety Equipment in Tampa, FL
+
+Main requirements:
+
+* Add one visible, crawlable <h1> inside the homepage <body>.
+* The homepage should have only one primary <h1>.
+* The H1 must be visible to users.
+* Do not hide the H1 with display:none, visibility:hidden, opacity:0, transform off-screen, delayed animation, or JavaScript-only rendering.
+* Keep the current React/Vite design and styling.
+* Place the H1 near the top of the homepage hero section before the main paragraph and CTA buttons.
+* Make sure the H1 supports the same topic as the title, meta description, and visible body content.
+* Keep the H1 under 150 characters.
+* Do not break Netlify deployment.
+
+Meta description:
+Add or verify a clear meta description that matches the title, H1, and page content.
+
+Use this meta description:
+Brandon Fire & Safety Equipment Co Inc provides fire extinguisher inspections, maintenance, tagging, and safety equipment services in Tampa, FL.
+
+Also audit and fix these HTML/SEO crawlability items:
+
+1. Semantic HTML
+
+* Use a proper <main> element.
+* Use clear <section> elements for hero, services, about, payment, contact, and footer areas.
+* Use heading hierarchy correctly:
+
+  * One <h1> for the homepage topic.
+  * <h2> for major homepage sections.
+  * <h3> for service cards or smaller subsections.
+* Do not use heading tags only for visual styling.
+
+2. Crawlable homepage content
+
+* Make sure important homepage text exists as real HTML text.
+* Do not place important SEO text only inside images, icons, canvas, modals, carousels, or delayed JavaScript.
+* Confirm the business name, services, location, contact information, and CTA text are readable in the DOM.
+
+3. Internal links
+
+* Confirm important navigation items use real <a href=""> links.
+* Avoid using only onClick handlers for navigation.
+* Check links for:
+
+  * Home
+  * Services
+  * About
+  * Contact
+  * Pay My Bill
+  * Request Service or Get a Quote if available
+
+4. Images and alt text
+
+* Add descriptive alt text to meaningful images.
+* Decorative images should use empty alt="".
+* Logo alt text should say:
+  Brandon Fire & Safety Equipment Co Inc logo
+
+5. Local business SEO
+
+* Confirm the homepage clearly mentions:
+
+  * Business name: Brandon Fire & Safety Equipment Co Inc
+  * Location: Tampa, FL
+  * Services: fire extinguisher inspections, maintenance, tagging, safety equipment, and fire safety services
+* Add or verify LocalBusiness or ProfessionalService JSON-LD structured data.
+* Make sure structured data matches the visible page content.
+
+6. Robots and sitemap
+
+* Confirm /robots.txt exists.
+* Confirm robots.txt does not block important pages.
+* Confirm /sitemap.xml exists.
+* Confirm robots.txt references the sitemap URL.
+* Confirm the sitemap uses the correct live production domain.
+
+7. Canonical and social tags
+
+* Add or verify a canonical URL for the homepage.
+* Add or verify Open Graph tags:
+
+  * og:title
+  * og:description
+  * og:url
+  * og:image
+* Add Twitter card tags if missing.
+
+8. React/Vite crawl safety
+
+* Make sure important SEO content renders immediately in React.
+* The H1, service text, business name, location, and CTAs should not depend on a slow API call.
+* If basic SEO scanners still cannot detect the H1, add a simple fallback inside index.html within the root div so raw page source includes the H1 and intro text before React loads.
+
+Only add fallback HTML if needed.
+
+After making changes:
+
+* Tell me exactly which files were changed.
+* Confirm the final title is:
+  Brandon Fire & Safety Equipment Co Inc | Tampa, FL
+* Confirm the final H1 text.
+* Confirm there is only one H1 on the homepage.
+* Confirm title, meta description, canonical, robots.txt, sitemap.xml, and structured data were checked.
+* Confirm the project still builds successfully with npm run build.
